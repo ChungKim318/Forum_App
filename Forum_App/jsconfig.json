@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "baseUrl": ".",
+    "paths": {
+      "utilities/*": ["./src/utilities/*"],
+      "containers/*": ["./src/containers/*"],
+      "components/*": ["./src/components/*"],
+      "services/*": ["./src/services/index"],
+      "selectors/*": ["./src/store/selectors/*"],
+      "constants/*": ["./src/constants/*"],
+      "screens/*": ["./src/screens/*"],
+      "assets/*": ["./src/assets/*"],
+      "actions/*": ["./src/store/actions/*"],
+      "actionTypes": ["./src/store/actionTypes"],
+      "sagas": ["./src/store/sagas/*"],
+      "reducers/*": ["./src/store/reducers/index"],
+      "configs/*": ["./src/configs/*"],
+      "helpers/*": ["./src/helpers/*"],
+      "parses/*": ["./src/store/parses/*"],
+      "models": ["./src/models"],
+      "store": ["./src/store/store"],
+      "locale/*": ["./src/locale/*"],
+      "HOC/*": ["./src/HOC/*"],
+      "navigation/*": ["./src/navigation/*"],
+      "themes": ["./src/themes/index"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
