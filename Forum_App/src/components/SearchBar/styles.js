@@ -1,11 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {
-  colors,
-  FontFamily,
-  FontSizes,
-  responsiveHeight,
-  responsiveWidth,
-} from 'themes';
+import {StyleSheet} from 'react-native'
+import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidth} from 'themes'
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,7 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.concrete,
     alignItems: 'center',
     // justifyContent: 'center',
-    borderRadius: responsiveWidth(10),
+    borderRadius: metrics.borderRadius,
   },
   textInput: {
     // width: '100%',
@@ -24,4 +18,4 @@ export const styles = StyleSheet.create({
     paddingVertical: responsiveHeight(5),
     paddingHorizontal: responsiveWidth(10),
   },
-});
+})

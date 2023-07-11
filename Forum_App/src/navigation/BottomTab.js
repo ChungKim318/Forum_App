@@ -1,12 +1,12 @@
-import React from 'react';
-import RouteKey from './RouteKey';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {screenMatch} from './ScreenService';
-import {colors, responsiveHeight} from 'themes';
-import Icon from 'components/Icon';
+import React from 'react'
+import RouteKey from './RouteKey'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import {screenMatch} from './ScreenService'
+import {colors, responsiveHeight} from 'themes'
+import Icon from 'components/Icon'
 
-const ICON_SIZE = 30;
-const Tab = createBottomTabNavigator();
+const ICON_SIZE = 30
+const Tab = createBottomTabNavigator()
 
 export const BottomTab = () => (
   <Tab.Navigator
@@ -30,12 +30,7 @@ export const BottomTab = () => (
       options={{
         tabBarLabel: 'Home',
         tabBarIcon: ({focused}) => (
-          <Icon
-            category="Entypo"
-            name="home"
-            size={ICON_SIZE}
-            color={focused ? colors.red : colors.gray}
-          />
+          <Icon category="Entypo" name="home" size={ICON_SIZE} color={focused ? colors.red : colors.gray} />
         ),
       }}
     />
@@ -90,14 +85,9 @@ export const BottomTab = () => (
       options={{
         tabBarLabel: 'Inbox',
         tabBarIcon: ({focused}) => (
-          <Icon
-            category="Feather"
-            name="bell"
-            size={ICON_SIZE}
-            color={focused ? colors.red : colors.gray}
-          />
+          <Icon category="Feather" name="bell" size={ICON_SIZE} color={focused ? colors.red : colors.gray} />
         ),
       }}
     />
   </Tab.Navigator>
-);
+)

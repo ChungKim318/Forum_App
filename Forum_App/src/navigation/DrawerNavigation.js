@@ -1,9 +1,9 @@
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer'
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator()
 
 export const DrawerNavigator = () => (
   <Drawer.Navigator>
     <Drawer.Screen />
   </Drawer.Navigator>
-);
+)

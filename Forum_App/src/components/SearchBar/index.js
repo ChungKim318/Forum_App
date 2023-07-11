@@ -1,6 +1,6 @@
-import {View, TextInput, TouchableOpacity} from 'react-native';
-import React from 'react';
-import {styles} from './styles';
+import {View, TextInput, TouchableOpacity} from 'react-native'
+import React from 'react'
+import {styles} from './styles'
 
 const SearchBar = ({
   refInput,
@@ -18,6 +18,7 @@ const SearchBar = ({
 }) => {
   return (
     <View style={[styles.container, textInputStyle]}>
+      <TouchableOpacity onPress={onPress}>{!!icon && icon}</TouchableOpacity>
       <TextInput
         ref={refInput}
         value={value}
@@ -28,9 +29,8 @@ const SearchBar = ({
         maxLength={maxLength}
         numberOfLines={numberOfLines}
       />
-      <TouchableOpacity onPress={onPress}>{!!icon && icon}</TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
-export default React.memo(SearchBar);
+export default React.memo(SearchBar)

@@ -1,32 +1,32 @@
-import {Dimensions, Platform} from 'react-native';
+import {Dimensions, Platform} from 'react-native'
 
-const DESIGN_WIDTH = 375;
-const DESIGN_HEIGHT = 812;
-const {width, height} = Dimensions.get('window');
+const DESIGN_WIDTH = 375
+const DESIGN_HEIGHT = 812
+const {width, height} = Dimensions.get('window')
 
 function responsiveWidth(value = 0) {
-  return (width * value) / DESIGN_WIDTH;
+  return (width * value) / DESIGN_WIDTH
 }
 
 function responsiveHeight(value = 0) {
-  return (height * value) / DESIGN_HEIGHT;
+  return (height * value) / DESIGN_HEIGHT
 }
 
-const scale = size => (width / DESIGN_WIDTH) * size;
+const scale = size => (width / DESIGN_WIDTH) * size
 
 function responsiveFont(fontSize, factor = 0.5) {
-  return fontSize + (scale(fontSize) - fontSize) * factor;
+  return fontSize + (scale(fontSize) - fontSize) * factor
 }
 
 function deviceWidth() {
-  return width;
+  return width
 }
 
 function deviceHeight() {
-  return height;
+  return height
 }
 
-const isIOS = Platform.OS === 'ios';
+const isIOS = Platform.OS === 'ios'
 
 const shadow = {
   shadowColor: '#000',
@@ -34,14 +34,14 @@ const shadow = {
   elevation: 5,
   shadowOpacity: 0.2,
   shadowOffset: {width: 0, height: 3},
-};
+}
 
 const hitSlop = {
   top: 10,
   bottom: 10,
   right: 10,
   left: 10,
-};
+}
 
 const metrics = {
   // Text Size
@@ -76,7 +76,7 @@ const metrics = {
   logoWidth: responsiveWidth(300),
   logoHeight: responsiveHeight(70),
   icon: responsiveHeight(30),
-};
+}
 
 const FontSizes = {
   TINY: responsiveFont(12),
@@ -86,7 +86,7 @@ const FontSizes = {
   LARGE: responsiveFont(20),
   X_LARGE: responsiveFont(22),
   XX_LARGE: responsiveFont(24),
-};
+}
 
 export {
   metrics,
@@ -99,4 +99,4 @@ export {
   responsiveWidth,
   deviceWidth,
   deviceHeight,
-};
+}

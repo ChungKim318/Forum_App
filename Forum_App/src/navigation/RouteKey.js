@@ -22,4 +22,5 @@ export default {
   SettingScreen: 'SettingScreen',
   SearchScreen: 'SearchScreen',
   ProfileScreen: 'ProfileScreen',
-};
+  EditProfile: 'EditProfile',
+}
