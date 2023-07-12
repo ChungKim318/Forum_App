@@ -29,11 +29,17 @@ function deviceHeight() {
 const isIOS = Platform.OS === 'ios'
 
 const shadow = {
-  shadowColor: '#000',
+  shadowColor: '#000000',
   shadowRadius: 5,
   elevation: 5,
   shadowOpacity: 0.2,
   shadowOffset: {width: 0, height: 3},
+}
+
+const tabBarWrapperStyle = {
+  width: '100%',
+  justifyContent: 'space-around',
+  backgroundColor: '#FFFFFF',
 }
 
 const hitSlop = {
@@ -94,6 +100,7 @@ export {
   isIOS,
   shadow,
   hitSlop,
+  tabBarWrapperStyle,
   responsiveFont,
   responsiveHeight,
   responsiveWidth,

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors, FontFamily, FontSizes, metrics, responsiveHeight} from 'themes';
+import {StyleSheet} from 'react-native'
+import {colors, FontFamily, FontSizes, metrics, responsiveHeight} from 'themes'
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,13 +10,14 @@ export const styles = StyleSheet.create({
   },
   tabBarWrapper: {
     flexDirection: 'row',
-    height: responsiveHeight(30),
+    height: responsiveHeight(40),
     backgroundColor: colors.white,
     paddingHorizontal: metrics.paddingHorizontal,
     marginBottom: metrics.small,
   },
   tabWrapper: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   tabTitleTxt: {
     color: colors.black,
@@ -31,4 +32,4 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
   },
-});
+})

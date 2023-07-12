@@ -1,10 +1,5 @@
 import {StyleSheet} from 'react-native'
-import {
-  colors,
-  metrics,
-  responsiveHeight,
-  responsiveWidth,
-} from 'themes'
+import {colors, metrics, responsiveHeight, responsiveWidth} from 'themes'
 
 export const styles = StyleSheet.create({
   container: {
@@ -35,5 +30,8 @@ export const styles = StyleSheet.create({
   headerCustomStyle: {
     marginHorizontal: metrics.span,
     justifyContent: 'space-between',
+  },
+  headerTitle: {
+    paddingLeft: metrics.xxl,
   },
 })

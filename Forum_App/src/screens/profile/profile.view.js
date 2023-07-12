@@ -1,5 +1,5 @@
 import {Text, TouchableOpacity, View} from 'react-native'
-import React from 'react'
+import React, {useCallback} from 'react'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {styles} from './profile.styles'
 import LinearGradient from 'react-native-linear-gradient'
@@ -10,8 +10,30 @@ import Icon from 'components/Icon'
 import {colors, icons, metrics} from 'themes'
 import UploadSelector from 'components/UploadSelector'
 import UploadField from 'components/UploadField'
+import {SceneMap} from 'react-native-tab-view'
+import PostTabView from './tabView/post'
+import CommentTabView from './tabView/comment'
+import AboutTabView from './tabView/about'
+import CustomTabView from 'components/CustomTabView'
 
-const ProfileView = ({onPressBack, onPressEdit, onChangeAvatar, singleFile, selectFile, ...props}) => {
+const ProfileView = ({
+  onPressBack,
+  onPressEdit,
+  onChangeAvatar,
+  singleFile,
+  selectFile,
+  listTab,
+  ...props
+}) => {
+  const renderScene = useCallback(
+    SceneMap({
+      post: props => <PostTabView {...props} />,
+      comment: props => <CommentTabView {...props} />,
+      about: props => <AboutTabView {...props} />,
+    }),
+    [],
+  )
+
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
@@ -68,10 +90,11 @@ const ProfileView = ({onPressBack, onPressEdit, onChangeAvatar, singleFile, sele
       </LinearGradient>
 
       <View style={styles.bodyView}>
-        <View style={styles.blankView}>
-          <FastImage source={icons.WOLF} resizeMode="stretch" style={styles.wolfIcon} />
-          <Text style={styles.txtBlank}>Wow, Such Empty</Text>
-        </View>
+        <CustomTabView
+          listTab={listTab}
+          renderScene={renderScene}
+          tabBarWrapperStyle={styles.tabBarWrapperStyle}
+        />
       </View>
     </SafeAreaView>
   )

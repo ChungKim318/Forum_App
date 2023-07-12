@@ -6,15 +6,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
   },
-  avatarUser: {
-    width: metrics.icon,
-    height: metrics.icon,
-    marginLeft: metrics.span,
-  },
-  headerCustomStyle: {
-    paddingHorizontal: metrics.paddingHorizontal,
-  },
-  titleStyle: {
-    paddingLeft: metrics.huge,
+  activeItemStyle: {
+    marginHorizontal: metrics.marginHorizontal,
+    borderRadius: metrics.borderRadius,
   },
 })

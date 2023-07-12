@@ -66,22 +66,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: metrics.borderRadiusHuge,
   },
-  wolfIcon: {
-    width: responsiveWidth(120),
-    height: responsiveHeight(120),
-  },
-  blankView: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  txtBlank: {
-    color: colors.black,
-    fontFamily: FontFamily.MEDIUM,
-    fontSize: FontSizes.MEDIUM,
-    paddingTop: metrics.span,
-  },
   headerView: {
     marginVertical: metrics.span,
+  },
+  tabBarWrapperStyle: {
+    width: '100%',
+    justifyContent: 'space-around',
+    backgroundColor: colors.white,
   },
 })

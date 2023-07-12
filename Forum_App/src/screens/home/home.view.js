@@ -14,23 +14,25 @@ import FastImage from 'react-native-fast-image'
 const HomeView = ({microButton, onPressProfile, ...props}) => {
   return (
     <SafeAreaView style={styles.container}>
+      <Header
+        iconLeft={<Icon category="EvilIcons" name="navicon" size={metrics.icon} color={colors.black} />}
+        iconRight={
+          <Icon
+            category="FontAwesome"
+            name="user"
+            size={metrics.large}
+            color={colors.white}
+            style={styles.iconProfile}
+          />
+        }
+        extraIcon={<Icon category="Feather" name="search" size={metrics.large} color={colors.black} />}
+        iconRightStyle={styles.iconProfileView}
+        customStyle={styles.headerCustomStyle}
+        onPressIconRight={onPressProfile}
+        title={'Home'}
+        titleStyle={styles.headerTitle}
+      />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Header
-          iconLeft={<Icon category="EvilIcons" name="navicon" size={metrics.icon} color={colors.black} />}
-          iconRight={
-            <Icon
-              category="FontAwesome"
-              name="user"
-              size={metrics.large}
-              color={colors.white}
-              style={styles.iconProfile}
-            />
-          }
-          extraIcon={<Icon category="Feather" name="search" size={metrics.large} color={colors.black} />}
-          iconRightStyle={styles.iconProfileView}
-          customStyle={styles.headerCustomStyle}
-          onPressIconRight={onPressProfile}
-        />
         <View style={[styles.newsFeedView, shadow]}>
           <ProfileOver />
           <TouchableOpacity activeOpacity={0.8}>

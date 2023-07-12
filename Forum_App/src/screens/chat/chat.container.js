@@ -1,8 +1,8 @@
-import React from 'react';
-import ChatView from './chat.view';
+import React from 'react'
+import ChatView from './chat.view'
 
 const ChatContainer = ({...props}) => {
-  return <ChatView />;
-};
+  return <ChatView />
+}
 
-export default ChatContainer;
+export default ChatContainer

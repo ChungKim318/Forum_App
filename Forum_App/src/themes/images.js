@@ -8,4 +8,5 @@ export const images = {
   WOW: require('assets/images/icon_wow_reaction.png'),
   DEFAULT_AVATAR: require('assets/images/blank_avatar.png'),
   LOGO: require('assets/images/main-logo.png'),
+  BLANK_CHAT: require('assets/images/blank-chat.png'),
 }

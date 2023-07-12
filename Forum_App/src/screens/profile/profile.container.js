@@ -4,6 +4,21 @@ import {goBack, navigate} from 'navigation/NavigationServices'
 import RouteKey from 'navigation/RouteKey'
 import DocumentPicker from 'react-native-document-picker'
 
+const listTab = [
+  {
+    title: 'Post',
+    key: 'post',
+  },
+  {
+    title: 'Comment',
+    key: 'comment',
+  },
+  {
+    title: 'About',
+    key: 'about',
+  },
+]
+
 const ProfileContainer = ({...props}) => {
   const [singleFile, setSingleFile] = useState(null)
   // const selectFile = useCallback(async () => {
@@ -54,6 +69,7 @@ const ProfileContainer = ({...props}) => {
       onPressEdit={onPressEdit}
       onChangeAvatar={onChangeAvatar}
       singleFile={singleFile}
+      listTab={listTab}
     />
   )
 }

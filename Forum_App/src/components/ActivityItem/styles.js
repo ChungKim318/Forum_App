@@ -4,17 +4,22 @@ import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidt
 export const styles = StyleSheet.create({
   container: {
     // flex: 1,
+    backgroundColor: colors.white,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    height: responsiveHeight(60),
+    paddingHorizontal: metrics.paddingHorizontal,
   },
-  titleStyle: {
-    color: colors.black,
-    fontFamily: FontFamily.SEMI_BOLD,
-    fontSize: FontSizes.LARGE,
-  },
-  groupIcon: {
+  leftWrapper: {
     flexDirection: 'row',
-    alignItems: 'center',
+  },
+  rightWrapper: {},
+  avatar: {
+    width: metrics.icon,
+    height: metrics.icon,
+  },
+  contentView: {
+    paddingLeft: metrics.tiny,
   },
 })

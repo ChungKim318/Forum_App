@@ -10,6 +10,7 @@ const baseColor = {
   light_silver: '#D7DFE2',
   white_sand: '#F6F6F6',
   denim: '#1976D2',
+  orange: '#FF7C42',
 }
 
 export const colors = {
