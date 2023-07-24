@@ -1,7 +1,7 @@
 const baseColor = {
   GrayOpacity01: 'rgba(255, 255, 255, 0.1)',
   GrayOpacity02: 'rgba(255, 255, 255, 0.2)',
-  black: '#1F1F1F',
+  black: '#000000',
   white: '#FFFFFF',
   gray: '#454545',
   red: '#FF0009',
@@ -11,6 +11,16 @@ const baseColor = {
   white_sand: '#F6F6F6',
   denim: '#1976D2',
   orange: '#FF7C42',
+  light_blue: '#24A0ED',
+  blue: '#0079D3',
+  discord_blue: '#7193FF',
+  mint: '#46D160',
+  brown: '#A06A42',
+  yellow_orange: '#FFB000',
+  yellow: '#FFD635',
+  cyan: '#0DD3BB',
+  purple: '#7E53C1',
+  pink: '#FF66AC',
 }
 
 export const colors = {

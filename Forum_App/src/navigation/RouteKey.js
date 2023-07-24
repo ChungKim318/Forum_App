@@ -23,4 +23,5 @@ export default {
   SearchScreen: 'SearchScreen',
   ProfileScreen: 'ProfileScreen',
   EditProfile: 'EditProfile',
+  CreateScreen: 'CreateScreen',
 }

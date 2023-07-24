@@ -1,6 +1,6 @@
-import {View, Text, TouchableOpacity, TextInput} from 'react-native';
-import React from 'react';
-import {styles} from './styles';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native'
+import React from 'react'
+import {styles} from './styles'
 
 const CustomTextInput = React.forwardRef(
   (
@@ -14,7 +14,7 @@ const CustomTextInput = React.forwardRef(
       onChange,
       onBlur,
       textInputStyle,
-      placeHolder,
+      placeholder,
       maxLength,
       iconRight,
       onPressIconRight,
@@ -35,17 +35,12 @@ const CustomTextInput = React.forwardRef(
     return (
       <View style={styles.inputView}>
         <View style={styles.titleView}>
-          {!!title && (
-            <Text style={[styles.titleInput, titleStyle]}>{title}</Text>
-          )}
-          {!!forgotPassword && (
-            <Text style={styles.titleInput}>{forgotPassword}</Text>
-          )}
+          {!!title && <Text style={[styles.titleInput, titleStyle]}>{title}</Text>}
+          {!!forgotPassword && <Text style={styles.titleInput}>{forgotPassword}</Text>}
         </View>
         <View style={[styles.textInputContainer, textInputStyle]}>
           {!!iconLeft && (
-            <TouchableOpacity
-              onPress={() => !!onPressIconLeft && onPressIconLeft()}>
+            <TouchableOpacity onPress={() => !!onPressIconLeft && onPressIconLeft()}>
               {iconLeft}
             </TouchableOpacity>
           )}
@@ -58,7 +53,7 @@ const CustomTextInput = React.forwardRef(
             secureTextEntry={!!isSecure}
             onBlur={onBlur}
             keyboardType={keyboardType}
-            placeholder={placeHolder}
+            placeholder={placeholder}
             placeholderTextColor={styles.placeHolderTextColor}
             maxLength={maxLength}
             numberOfLines={numberOfLines}
@@ -68,19 +63,16 @@ const CustomTextInput = React.forwardRef(
             autoCapitalize={'none'}
           />
           {!!iconRight && (
-            <TouchableOpacity
-              onPress={() => !!onPressIconRight && onPressIconRight()}>
+            <TouchableOpacity onPress={() => !!onPressIconRight && onPressIconRight()}>
               {iconRight}
             </TouchableOpacity>
           )}
         </View>
 
-        {isTouched && !!errorMessage && (
-          <Text style={styles.errorText}>{errorMessage}</Text>
-        )}
+        {isTouched && !!errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
       </View>
-    );
+    )
   },
-);
+)
 
-export default React.memo(CustomTextInput);
+export default React.memo(CustomTextInput)

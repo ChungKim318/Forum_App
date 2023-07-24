@@ -23,13 +23,13 @@ const ProfileOver = ({
       </TouchableOpacity>
       <View style={styles.txtView}>
         <TouchableOpacity onPress={onPressGroup}>
-          <Text>{groupName} groupName</Text>
+          <Text>{groupName}</Text>
         </TouchableOpacity>
         <View style={styles.groupNTimeView}>
           <TouchableOpacity onPress={onPressName}>
-            <Text>{userName} Name</Text>
+            <Text>{userName} </Text>
           </TouchableOpacity>
-          <Text>{time} time</Text>
+          <Text>{time}</Text>
         </View>
       </View>
       <TouchableOpacity onPress={onPressShare} style={styles.dotThree}>

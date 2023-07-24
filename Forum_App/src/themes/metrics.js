@@ -71,6 +71,7 @@ const metrics = {
   borderRadius: responsiveHeight(5),
   borderRadiusLarge: responsiveHeight(10),
   borderRadiusHuge: responsiveHeight(20),
+  borderRadiusCircle: responsiveHeight(60),
 
   // margin
   marginTop: responsiveHeight(12),

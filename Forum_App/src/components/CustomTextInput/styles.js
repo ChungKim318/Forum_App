@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   inputView: {
-    height: responsiveHeight(50),
+    // height: responsiveHeight(50),
     // width: '100%',
     paddingVertical: responsiveHeight(5),
   },

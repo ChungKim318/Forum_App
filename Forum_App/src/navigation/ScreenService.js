@@ -13,6 +13,7 @@ import SearchContainer from 'screens/search/search.container'
 import SettingContainer from 'screens/setting/setting.container'
 import ProfileContainer from 'screens/profile/profile.container'
 import EditProfileContainer from 'screens/editProfile/editProfile.container'
+import CreateContainer from 'screens/create/create.container'
 
 export const screenMatch = screen => {
   switch (screen) {
@@ -39,6 +40,8 @@ export const screenMatch = screen => {
       return ProfileContainer
     case RouteKey.EditProfile:
       return EditProfileContainer
+    case RouteKey.CreateScreen:
+      return CreateContainer
     default:
       return ''
   }
@@ -55,6 +58,7 @@ export const optionMatch = ({route}) => {
   let animation = 'default'
   let title = ''
   let headerLeft = null
+  let animationEnabled = true
   switch (name) {
     case RouteKey.HomeScreen:
     case RouteKey.HomeStack:
@@ -74,5 +78,6 @@ export const optionMatch = ({route}) => {
     gestureEnabled,
     headerBackTitleVisible,
     headerLeft,
+    animationEnabled,
   }
 }

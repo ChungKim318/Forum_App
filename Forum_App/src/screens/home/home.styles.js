@@ -4,6 +4,7 @@ import {colors, metrics, responsiveHeight, responsiveWidth} from 'themes'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.white,
   },
   newsFeedView: {
     backgroundColor: colors.white,
@@ -28,10 +29,15 @@ export const styles = StyleSheet.create({
     marginLeft: metrics.span,
   },
   headerCustomStyle: {
-    marginHorizontal: metrics.span,
-    justifyContent: 'space-between',
+    paddingHorizontal: metrics.paddingHorizontal,
   },
   headerTitle: {
     paddingLeft: metrics.xxl,
+  },
+  footerFeeds: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    paddingBottom: metrics.span,
   },
 })

@@ -11,13 +11,12 @@ const HeaderSearch = ({
   onPressLeft = () => {},
   onPressRight = () => {},
   iconRightStyle,
+  customStyle,
   ...props
 }) => {
   return (
-    <View style={styles.container}>
-      {!!iconLeft && (
-        <TouchableOpacity onPress={onPressLeft}>{iconLeft}</TouchableOpacity>
-      )}
+    <View style={[styles.container, customStyle]}>
+      {!!iconLeft && <TouchableOpacity onPress={onPressLeft}>{iconLeft}</TouchableOpacity>}
 
       <SearchBar
         icon={

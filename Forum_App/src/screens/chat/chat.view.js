@@ -7,6 +7,7 @@ import Icon from 'components/Icon'
 import {colors, images, metrics} from 'themes'
 import FastImage from 'react-native-fast-image'
 import AppConfigs from 'configs/env'
+import ItemChat from 'components/ItemChat'
 
 const ChatView = ({...props}) => {
   return (
@@ -34,7 +35,7 @@ const ChatView = ({...props}) => {
       />
 
       {/* View empty Chat */}
-      <View style={styles.blankView}>
+      {/* <View style={styles.blankView}>
         <FastImage source={images.BLANK_CHAT} resizeMode="stretch" style={styles.blankChat} />
         <Text style={styles.txtBlank}>Wow, Don't have any chat, Create One!</Text>
         <TouchableOpacity activeOpacity={0.8}>
@@ -42,6 +43,11 @@ const ChatView = ({...props}) => {
             <Text style={styles.txtChatNow}>Chat Now</Text>
           </View>
         </TouchableOpacity>
+      </View> */}
+
+      {/* View Have Chat */}
+      <View style={styles.bodyView}>
+        <ItemChat />
       </View>
     </SafeAreaView>
   )

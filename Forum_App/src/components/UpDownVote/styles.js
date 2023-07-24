@@ -3,12 +3,14 @@ import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidt
 
 export const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.white,
     flexDirection: 'row',
     alignItems: 'center',
   },
   txtTitle: {
     color: colors.black,
     fontFamily: FontFamily.MEDIUM,
-    fontSize: FontSizes.SMALL,
+    fontSize: FontSizes.NORMAL,
+    paddingHorizontal: metrics.tiny,
   },
 })

@@ -46,4 +46,9 @@ export const styles = StyleSheet.create({
     fontFamily: FontFamily.SEMI_BOLD,
     fontSize: FontSizes.MEDIUM,
   },
+  bodyView: {
+    flex: 1,
+    paddingVertical: metrics.paddingHorizontal,
+    backgroundColor: colors.white_sand,
+  },
 })

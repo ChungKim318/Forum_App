@@ -6,7 +6,7 @@ const MicroFeedButton = ({icon, text, onPress = () => {}, buttonStyle, ...props}
   return (
     <TouchableOpacity style={[styles.container, buttonStyle]} onPress={onPress}>
       {!!icon && icon}
-      {!!text && <Text> {text}</Text>}
+      {!!text && <Text style={styles.txtTitle}>{text}</Text>}
     </TouchableOpacity>
   )
 }
