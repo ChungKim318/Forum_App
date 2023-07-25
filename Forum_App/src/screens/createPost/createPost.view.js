@@ -8,6 +8,7 @@ import {colors, metrics, shadow} from 'themes'
 import CustomTextInput from 'components/CustomTextInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import MicroIconButton from 'components/MicroIconButton'
+import ToastManager from 'components/ToastManager'
 
 const CreatePostView = ({onBack, onPost, showModal, ...props}) => {
   return (
@@ -49,6 +50,7 @@ const CreatePostView = ({onBack, onPost, showModal, ...props}) => {
             />
           </View>
         </View>
+        {/* <ToastManager position="top" positionHorizontal="right" duration={10000} /> */}
       </KeyboardAwareScrollView>
     </SafeAreaView>
   )

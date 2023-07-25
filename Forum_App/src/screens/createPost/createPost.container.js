@@ -3,7 +3,8 @@ import CreatePostView from './createPost.view'
 import {goBack} from 'navigation/NavigationServices'
 import {showNotification} from 'components/ModalNotification'
 import {showModalEmpty} from 'components/CustomModal'
-import {sendMessageOnlyRead} from 'helpers/sendNotfication'
+import {sendMessageOnlyRead} from 'helpers/sendNotification'
+import {Toast} from 'components/ToastManager'
 
 const CreatePostContainer = ({...props}) => {
   const onBack = useCallback(() => {
@@ -11,7 +12,7 @@ const CreatePostContainer = ({...props}) => {
   }, [])
 
   const onPost = useCallback(() => {
-    sendMessageOnlyRead('TEST  FUNCTION SEND MESSAGE ONLY READ SUCCESSFUL')
+    Toast.success('AAAAA')
   }, [])
 
   const showModal = useCallback(() => {
