@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React, {useCallback, useMemo, useRef} from 'react'
 import CreatePostView from './createPost.view'
 import {goBack} from 'navigation/NavigationServices'
 import {showNotification} from 'components/ModalNotification'
@@ -12,7 +12,7 @@ const CreatePostContainer = ({...props}) => {
   }, [])
 
   const onPost = useCallback(() => {
-    Toast.success('AAAAA')
+    // Toast.success('AAAAA')
   }, [])
 
   const showModal = useCallback(() => {

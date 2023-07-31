@@ -3,7 +3,7 @@ import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidt
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: colors.white,
     alignItems: 'center',
   },

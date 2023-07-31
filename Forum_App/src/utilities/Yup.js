@@ -37,3 +37,32 @@ export const signupSchema = Yup.object().shape({
     .matches(/[0-9]/g, 'Phải có số')
     .matches(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/, 'Phải có ký tự đặc biệt'),
 })
+
+export const changePasswordSchema = Yup.object().shape({
+  oldPassword: Yup.string().required('Input cannot be blank!'),
+  newPassword: Yup.string().required('Input cannot be blank!'),
+  confirmPassword: Yup.string()
+    .required('Input cannot be blank!')
+    .oneOf([Yup.ref('newPassword')], 'Password does not match'),
+})
+
+export const resetPasswordSchema = Yup.object().shape({
+  verifyCode: Yup.number()
+    .required('Input cannot be blank!')
+    .test({
+      name: 'length',
+      exclusive: true,
+      message: 'Please enter all 4 numbers',
+      test: value => {
+        if (JSON.stringify(value)?.length != 4) {
+          return false
+        } else {
+          return true
+        }
+      },
+    }),
+  newPassword: Yup.string().required('Input cannot be blank!'),
+  confirmNewPassword: Yup.string()
+    .required('Input cannot be blank!')
+    .oneOf([Yup.ref('newPassword')], 'Password does not match'),
+})

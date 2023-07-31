@@ -17,12 +17,16 @@ const Header = ({
 }) => {
   return (
     <View style={[styles.container, customStyle]}>
-      {!!iconLeft && <TouchableOpacity onPress={onPressIconLeft}>{iconLeft}</TouchableOpacity>}
+      {!!iconLeft && (
+        <TouchableOpacity activeOpacity={0.6} onPress={onPressIconLeft}>
+          {iconLeft}
+        </TouchableOpacity>
+      )}
       {!!title && <Text style={[styles.titleStyle, titleStyle]}>{title}</Text>}
       <View style={styles.groupIcon}>
         {!!extraIcon && <TouchableOpacity onPress={onPressExtraIcon}>{extraIcon}</TouchableOpacity>}
         {!!iconRight && (
-          <TouchableOpacity onPress={onPressIconRight} style={iconRightStyle}>
+          <TouchableOpacity activeOpacity={0.6} onPress={onPressIconRight} style={iconRightStyle}>
             {iconRight}
           </TouchableOpacity>
         )}

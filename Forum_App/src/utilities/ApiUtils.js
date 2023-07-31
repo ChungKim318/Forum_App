@@ -20,7 +20,7 @@ const axiosInstance = axios.create({
 function isTokenExpired(token) {
   var decoded = jwt_decode(token)
 
-  if (decoded.exp < Date.now() / 3000) {
+  if (decoded.exp < Date.now() / 1000) {
     return true
   } else {
     return false
@@ -32,8 +32,8 @@ axiosInstance.interceptors.request.use(
       return config
     }
     if (!isTokenExpired(APIUtils.token)) {
-      config.headers.Authorization = `Bearer ${APIUtils.token}`
-      // config.headers['Authorization'] = `Bearer ${APIUtils.token}`;
+      // config.headers.Authorization = `Bearer ${APIUtils.token}`
+      config.headers['Authorization'] = `Bearer ${APIUtils.token}`
       console.log('config: ', config)
       return config
     } else {
@@ -51,8 +51,8 @@ axiosInstance.interceptors.request.use(
         value: res?.data?.accessToken,
       })
       APIUtils.setAccessToken(res?.data?.accessToken)
-      config.headers.Authorization = `Bearer ${res?.data?.accessToken}`
-      // config.headers['Authorization'] = `Bearer ${res?.data?.accessToken}`;
+      // config.headers.Authorization = `Bearer ${res?.data?.accessToken}`
+      config.headers['Authorization'] = `Bearer ${res?.data?.accessToken}`
       return config
     }
   },

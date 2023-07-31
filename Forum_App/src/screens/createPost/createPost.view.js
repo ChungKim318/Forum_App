@@ -9,8 +9,20 @@ import CustomTextInput from 'components/CustomTextInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import MicroIconButton from 'components/MicroIconButton'
 import ToastManager from 'components/ToastManager'
+import BottomSheet from '@gorhom/bottom-sheet'
+import {GestureHandlerRootView} from 'react-native-gesture-handler'
 
-const CreatePostView = ({onBack, onPost, showModal, ...props}) => {
+const CreatePostView = ({
+  onBack,
+  onPost,
+  showModal,
+  bottomSheetRef,
+  snapPoints,
+  handleSheetChanges,
+  handlePresent,
+  handleClose,
+  ...props
+}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header
@@ -24,21 +36,26 @@ const CreatePostView = ({onBack, onPost, showModal, ...props}) => {
         onPressIconLeft={onBack}
         onPressIconRight={onPost}
       />
-      <KeyboardAwareScrollView enableOnAndroid style={styles.bodyView} extraHeight={50}>
-        <View style={{flex: 2, backgroundColor: 'black'}}>
-          <CustomTextInput
-            multiline
-            placeholder="Title"
-            textInputStyle={styles.titleInputStyle}
-            textStyle={styles.textInputTitle}
-          />
-          <CustomTextInput
-            multiline
-            placeholder="body text (optional)"
-            textInputStyle={styles.textInputStyle}
-            textStyle={styles.textInput}
-          />
-        </View>
+
+      <KeyboardAwareScrollView
+        enableOnAndroid
+        style={styles.bodyView}
+        extraHeight={80}
+        contentContainerStyle={styles.bodyView}>
+        {/* <ToastManager position="top" positionHorizontal="right" duration={10000} /> */}
+
+        <CustomTextInput
+          multiline
+          placeholder="Title"
+          textInputStyle={styles.titleTextInputStyle}
+          textStyle={styles.titleTextStyle}
+        />
+        <CustomTextInput
+          multiline
+          placeholder="body text (optional)"
+          textInputStyle={styles.bodyTextInputStyle}
+          textStyle={styles.bodyTextInput}
+        />
 
         <View style={[styles.footerView, shadow]}>
           <Text style={styles.txtFooter}>What do you want to add?</Text>
@@ -50,7 +67,6 @@ const CreatePostView = ({onBack, onPost, showModal, ...props}) => {
             />
           </View>
         </View>
-        {/* <ToastManager position="top" positionHorizontal="right" duration={10000} /> */}
       </KeyboardAwareScrollView>
     </SafeAreaView>
   )

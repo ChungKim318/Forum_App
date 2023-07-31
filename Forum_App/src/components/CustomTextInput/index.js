@@ -28,6 +28,7 @@ const CustomTextInput = React.forwardRef(
       onSubmitEditing,
       isTouched,
       multiline,
+      autoCapitalize,
       ...props
     },
     refInput,
@@ -60,7 +61,7 @@ const CustomTextInput = React.forwardRef(
             editable={editable}
             returnKeyType={returnKeyType}
             onSubmitEditing={onSubmitEditing}
-            autoCapitalize={'none'}
+            autoCapitalize={autoCapitalize}
           />
           {!!iconRight && (
             <TouchableOpacity onPress={() => !!onPressIconRight && onPressIconRight()}>

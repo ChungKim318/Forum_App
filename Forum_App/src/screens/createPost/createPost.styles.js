@@ -4,7 +4,7 @@ import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidt
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: colors.white,
+    backgroundColor: colors.white,
   },
   btnPost: {
     backgroundColor: colors.light_silver,
@@ -15,54 +15,42 @@ export const styles = StyleSheet.create({
     borderRadius: metrics.borderRadiusHuge,
   },
   bodyView: {
-    flexGrow: 0.7,
-    backgroundColor: colors.discord_blue,
+    flexGrow: 1,
+    // backgroundColor: colors.blue,
     // borderWidth: 1,
   },
   headerStyle: {
     flex: 0.2,
     paddingHorizontal: metrics.paddingHorizontal,
-    // backgroundColor: colors.red,
   },
-  txtView: {
-    height: responsiveHeight(300),
-    backgroundColor: colors.brown,
+  titleTextInputStyle: {
+    backgroundColor: colors.light_silver,
+    height: responsiveHeight(80),
   },
-  textInput: {
+  titleTextStyle: {
+    fontFamily: FontFamily.BOLD,
+    fontSize: FontSizes.XX_LARGE,
+    height: responsiveHeight(80),
+  },
+  bodyTextInputStyle: {
+    backgroundColor: colors.light_silver,
+    height: responsiveHeight(350),
+  },
+  bodyTextInput: {
     fontFamily: FontFamily.REGULAR,
     fontSize: FontSizes.MEDIUM,
-    // paddingVertical: responsiveHeight(10),
-    height: responsiveHeight(300),
-  },
-  textInputStyle: {
-    height: responsiveHeight(300),
-    // paddingVertical: responsiveHeight(10),
-    backgroundColor: colors.white,
-  },
-  textInputTitle: {
-    fontFamily: FontFamily.BOLD,
-    fontSize: FontSizes.X_LARGE,
-    // paddingVertical: responsiveHeight(10),
-    height: responsiveHeight(50),
-  },
-  titleInputStyle: {
-    height: responsiveHeight(50),
-    backgroundColor: colors.red,
-  },
-  txtViewTitle: {
-    // marginBottom: responsiveHeight(20),
-    height: responsiveHeight(50),
+    height: responsiveHeight(350),
   },
   footerView: {
-    flex: 1,
-    backgroundColor: colors.white,
+    // flex: 1,
+    // backgroundColor: colors.white,
     height: responsiveHeight(100),
     width: '100%',
-    // position: 'absolute',
+    position: 'absolute',
     borderTopLeftRadius: metrics.borderRadiusLarge,
     borderTopRightRadius: metrics.borderRadiusLarge,
-    // top: responsiveHeight(400),
-    bottom: 0,
+    marginTop: responsiveHeight(430),
+    backgroundColor: colors.mint,
   },
   txtFooter: {
     fontFamily: FontFamily.SEMI_BOLD,

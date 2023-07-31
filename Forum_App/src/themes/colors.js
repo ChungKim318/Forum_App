@@ -1,6 +1,6 @@
 const baseColor = {
   GrayOpacity01: 'rgba(255, 255, 255, 0.1)',
-  GrayOpacity02: 'rgba(255, 255, 255, 0.2)',
+  GrayOpacity02: 'rgba(255, 255, 255, 0.5)',
   black: '#000000',
   white: '#FFFFFF',
   gray: '#454545',
