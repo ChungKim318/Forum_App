@@ -13,24 +13,51 @@ import FastImage from 'react-native-fast-image'
 import UpDownVote from 'components/UpDownVote'
 import {formatDate} from 'helpers/formatTime'
 import {FlashList} from '@shopify/flash-list'
+import {navigate} from 'navigation/NavigationServices'
+import RouteKey from 'navigation/RouteKey'
+import AppConfigs from 'configs/env'
 
 const HomeView = ({
   microButton,
   homeData,
   voteNumber,
-  onPressProfile,
+  onPressMyProfile,
   onUpVote,
   onDownVote,
   onComment,
   onShare,
+  onGoUserProfile,
+  onPressThreeDots,
   ...props
 }) => {
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={[styles.newsFeedView, shadow]}>
-        <ProfileOver groupName={item.groupname} userName={item.username} time={item.time} />
+        <ProfileOver
+          userName={item.username}
+          time={item.time}
+          onPressAvatar={() => {
+            navigate(RouteKey.UserProfileScreen, {
+              username: item?.username,
+            })
+          }}
+          onPressName={() => {
+            navigate(RouteKey.UserProfileScreen, {
+              username: item?.username,
+            })
+          }}
+          onPressShare={onPressThreeDots}
+        />
         <TouchableOpacity activeOpacity={0.8}>
-          <NewsFeedItem />
+          <NewsFeedItem
+            image={
+              <FastImage
+                source={{uri: AppConfigs.IMAGE_DEFAULT}}
+                resizeMode={'contain'}
+                style={styles.image}
+              />
+            }
+          />
         </TouchableOpacity>
         <View style={styles.slag} />
         <View style={styles.footerFeeds}>
@@ -72,7 +99,7 @@ const HomeView = ({
         extraIcon={<Icon category="Feather" name="search" size={metrics.large} color={colors.black} />}
         iconRightStyle={styles.iconProfileView}
         customStyle={styles.headerCustomStyle}
-        onPressIconRight={onPressProfile}
+        onPressIconRight={onPressMyProfile}
         title={'Home'}
         titleStyle={styles.headerTitle}
       />

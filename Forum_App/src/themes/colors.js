@@ -21,6 +21,9 @@ const baseColor = {
   cyan: '#0DD3BB',
   purple: '#7E53C1',
   pink: '#FF66AC',
+  gradient_blue: '#3982b8',
+  gradient_darkblue: '#235284',
+  dash: '#EDEFF1',
 }
 
 export const colors = {

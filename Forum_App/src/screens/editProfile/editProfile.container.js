@@ -8,6 +8,7 @@ import Facebook from 'assets/icons/facebook.svg'
 import Google from 'assets/icons/google.svg'
 import Instagram from 'assets/icons/instagram.svg'
 import {OpenLinkingUrl} from 'helpers/linkingConfig'
+import {Toast} from 'components/ToastManager'
 
 const user = {
   username: 'Chung',
@@ -54,7 +55,9 @@ const EditProfileContainer = () => {
     goBack()
   }, [])
 
-  const onSave = useCallback(() => {}, [])
+  const onSave = useCallback(() => {
+    Toast.success('Save Successful!!')
+  }, [])
 
   const onChangeAvatar = useCallback(() => {}, [])
 

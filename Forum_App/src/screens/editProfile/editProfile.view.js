@@ -16,6 +16,7 @@ import CustomToggleSwitch from 'components/Toggle'
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
 import Facebook from 'assets/icons/facebook.svg'
 import CustomSocialButton from 'components/CustomSocialButton'
+import ToastManager from 'components/ToastManager'
 
 const EditProfileView = ({
   bottomSheetRef,
@@ -65,7 +66,12 @@ const EditProfileView = ({
             onPressIconLeft={onClose}
             onPressIconRight={onSave}
           />
-          <KeyboardAwareScrollView extraHeight={100} showsVerticalScrollIndicator={false}>
+          <ToastManager duration={10000} position="top" positionHorizontal="right" />
+
+          <KeyboardAwareScrollView
+            extraHeight={100}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.contentContainerStyle}>
             <View>
               {!!user?.coverImage ? (
                 <TouchableOpacity onPress={onChangeCover} activeOpacity={0.6}>

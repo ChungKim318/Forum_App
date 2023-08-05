@@ -14,6 +14,7 @@ import SettingContainer from 'screens/setting/setting.container'
 import ProfileContainer from 'screens/profile/profile.container'
 import EditProfileContainer from 'screens/editProfile/editProfile.container'
 import CreateContainer from 'screens/create/create.container'
+import UserProfileContainer from 'screens/userProfile/userProfile.container'
 
 export const screenMatch = screen => {
   switch (screen) {
@@ -42,6 +43,8 @@ export const screenMatch = screen => {
       return EditProfileContainer
     case RouteKey.CreateScreen:
       return CreateContainer
+    case RouteKey.UserProfileScreen:
+      return UserProfileContainer
     default:
       return ''
   }

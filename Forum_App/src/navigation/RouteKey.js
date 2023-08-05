@@ -24,4 +24,5 @@ export default {
   ProfileScreen: 'ProfileScreen',
   EditProfile: 'EditProfile',
   CreateScreen: 'CreateScreen',
+  UserProfileScreen: 'UserProfileScreen',
 }

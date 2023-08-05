@@ -3,6 +3,7 @@ import ProfileView from './profile.view'
 import {goBack, navigate} from 'navigation/NavigationServices'
 import RouteKey from 'navigation/RouteKey'
 import DocumentPicker from 'react-native-document-picker'
+import {sendMessageOnlyRead} from 'helpers/sendNotification'
 
 const listTab = [
   {
@@ -21,22 +22,6 @@ const listTab = [
 
 const ProfileContainer = ({...props}) => {
   const [singleFile, setSingleFile] = useState(null)
-  // const selectFile = useCallback(async () => {
-  //   try {
-  //     const res = await DocumentPicker.pick({
-  //       type: [DocumentPicker.types.allFiles],
-  //     })
-  //     console.log('🚀 ~ file: index.js:13 ~ selectFile ~ res:', JSON.stringify(res))
-  //     setSingleFile(res)
-  //   } catch (error) {
-  //     setSingleFile(null)
-  //     if (DocumentPicker.isCancel(error)) {
-  //       alert('Hủy bỏ')
-  //     } else {
-  //       alert('Unknown Error', JSON.stringify(error))
-  //     }
-  //   }
-  // }, [])
 
   const onPressBack = useCallback(() => {
     goBack()
@@ -56,9 +41,10 @@ const ProfileContainer = ({...props}) => {
     } catch (error) {
       setSingleFile(null)
       if (DocumentPicker.isCancel(error)) {
-        alert('Canceled')
+        sendMessageOnlyRead('Changing avatar is canceled!!')
       } else {
-        alert('Unknown Error', JSON.stringify(error))
+        // alert('Unknown Error', JSON.stringify(error))
+        sendMessageOnlyRead('Unknown Error!!')
       }
     }
   }, [])

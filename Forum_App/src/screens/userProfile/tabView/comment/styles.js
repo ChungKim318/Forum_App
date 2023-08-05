@@ -3,13 +3,17 @@ import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidt
 
 export const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: colors.white,
   },
-  txtContent: {
-    fontFamily: FontFamily.REGULAR,
-    fontSize: FontSizes.SMALL,
-    color: colors.black,
-    marginHorizontal: responsiveWidth(10),
+  dash: {
+    height: responsiveHeight(1),
+    backgroundColor: colors.dash,
+  },
+  separator: {
+    height: responsiveHeight(10),
+  },
+  contentContainerStyle: {
+    paddingBottom: responsiveHeight(100),
   },
 })

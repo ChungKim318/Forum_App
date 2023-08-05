@@ -107,4 +107,7 @@ export const styles = StyleSheet.create({
   backgroundContainer: {
     backgroundColor: 'green',
   },
+  contentContainerStyle: {
+    paddingBottom: responsiveHeight(30),
+  },
 })

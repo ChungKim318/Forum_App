@@ -36,38 +36,42 @@ const CreatePostView = ({
         onPressIconLeft={onBack}
         onPressIconRight={onPost}
       />
+      {/* // create view scrollable when keyboard is open */}
+      <GestureHandlerRootView style={styles.bodyView}>
+        <KeyboardAwareScrollView
+          enableOnAndroid
+          style={styles.bodyView}
+          extraHeight={140}
+          // contentContainerStyle={styles.bodyView}
+          bounces={false}>
+          <CustomTextInput
+            multiline
+            placeholder="Title"
+            textInputStyle={styles.titleTextInputStyle}
+            textStyle={styles.titleTextStyle}
+          />
+          <CustomTextInput
+            multiline
+            placeholder="body text (optional)"
+            textInputStyle={styles.bodyTextInputStyle}
+            textStyle={styles.bodyTextInput}
+          />
 
-      <KeyboardAwareScrollView
-        enableOnAndroid
-        style={styles.bodyView}
-        extraHeight={80}
-        contentContainerStyle={styles.bodyView}>
-        {/* <ToastManager position="top" positionHorizontal="right" duration={10000} /> */}
-
-        <CustomTextInput
-          multiline
-          placeholder="Title"
-          textInputStyle={styles.titleTextInputStyle}
-          textStyle={styles.titleTextStyle}
-        />
-        <CustomTextInput
-          multiline
-          placeholder="body text (optional)"
-          textInputStyle={styles.bodyTextInputStyle}
-          textStyle={styles.bodyTextInput}
-        />
-
-        <View style={[styles.footerView, shadow]}>
-          <Text style={styles.txtFooter}>What do you want to add?</Text>
-          <View style={styles.btnIcon}>
-            <MicroIconButton
-              title={'Link'}
-              icon={<Icon category="Foundation" name="play-video" size={metrics.icon} color={colors.black} />}
-              onPress={showModal}
-            />
+          <View style={[styles.footerView, shadow]}>
+            <Text style={styles.txtFooter}>What do you want to add?</Text>
+            <View style={styles.btnIcon}>
+              <MicroIconButton
+                title={'Link'}
+                icon={
+                  <Icon category="Foundation" name="play-video" size={metrics.icon} color={colors.black} />
+                }
+                onPress={showModal}
+              />
+            </View>
           </View>
-        </View>
-      </KeyboardAwareScrollView>
+        </KeyboardAwareScrollView>
+      </GestureHandlerRootView>
+      {/* <ToastManager position="top" positionHorizontal="right" duration={10000} /> */}
     </SafeAreaView>
   )
 }

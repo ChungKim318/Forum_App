@@ -15,16 +15,16 @@ export const styles = StyleSheet.create({
     borderRadius: metrics.borderRadiusHuge,
   },
   bodyView: {
-    flexGrow: 1,
-    // backgroundColor: colors.blue,
+    flex: 1,
+    backgroundColor: colors.blue,
     // borderWidth: 1,
   },
   headerStyle: {
-    flex: 0.2,
+    flex: 0.1,
     paddingHorizontal: metrics.paddingHorizontal,
   },
   titleTextInputStyle: {
-    backgroundColor: colors.light_silver,
+    backgroundColor: colors.white,
     height: responsiveHeight(80),
   },
   titleTextStyle: {
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     height: responsiveHeight(80),
   },
   bodyTextInputStyle: {
-    backgroundColor: colors.light_silver,
+    backgroundColor: colors.white,
     height: responsiveHeight(350),
   },
   bodyTextInput: {
@@ -42,15 +42,15 @@ export const styles = StyleSheet.create({
     height: responsiveHeight(350),
   },
   footerView: {
-    // flex: 1,
     // backgroundColor: colors.white,
     height: responsiveHeight(100),
     width: '100%',
     position: 'absolute',
     borderTopLeftRadius: metrics.borderRadiusLarge,
     borderTopRightRadius: metrics.borderRadiusLarge,
-    marginTop: responsiveHeight(430),
-    backgroundColor: colors.mint,
+    marginTop: responsiveHeight(500),
+    backgroundColor: colors.white,
+    justifyContent: 'center',
   },
   txtFooter: {
     fontFamily: FontFamily.SEMI_BOLD,

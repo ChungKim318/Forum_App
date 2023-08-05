@@ -3,7 +3,7 @@ import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidt
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     width: metrics.xxl,
     height: metrics.xxl,
     margin: responsiveWidth(5),
+    borderRadius: metrics.borderRadiusCircle,
   },
   groupNTimeView: {
     flexDirection: 'row',
@@ -23,5 +24,12 @@ export const styles = StyleSheet.create({
   txtView: {
     width: responsiveWidth(300),
     paddingLeft: responsiveWidth(5),
+  },
+  dot: {
+    width: metrics.tiny,
+    height: metrics.tiny,
+    borderRadius: metrics.tiny,
+    backgroundColor: colors.black,
+    marginHorizontal: metrics.tiny,
   },
 })

@@ -3,13 +3,7 @@ import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidt
 
 export const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  txtTitle: {
-    color: colors.black,
-    fontFamily: FontFamily.MEDIUM,
-    fontSize: FontSizes.SMALL,
-    marginLeft: metrics.tiny,
+    flex: 1,
+    backgroundColor: colors.white,
   },
 })

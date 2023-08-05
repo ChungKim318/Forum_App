@@ -56,5 +56,10 @@ export const MainStackNavigator = () => (
       component={screenMatch(RouteKey.EditProfile)}
       options={optionMatch}
     />
+    <Stack.Screen
+      name={RouteKey.UserProfileScreen}
+      component={screenMatch(RouteKey.UserProfileScreen)}
+      options={optionMatch}
+    />
   </Stack.Navigator>
 )

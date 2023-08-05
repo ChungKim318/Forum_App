@@ -40,4 +40,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingBottom: metrics.span,
   },
+  image: {
+    height: responsiveHeight(200),
+  },
 })

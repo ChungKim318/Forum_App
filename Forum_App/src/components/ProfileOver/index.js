@@ -8,34 +8,31 @@ import Icon from 'components/Icon'
 const ProfileOver = ({
   avatar = 'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-9.jpg',
   userName,
-  groupName,
   time,
   onPressShare = () => {},
   onPressAvatar = () => {},
-  onPressGroup = () => {},
+  onPressDetail = () => {},
   onPressName = () => {},
   ...props
 }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} activeOpacity={0.8} onPress={onPressDetail}>
       <TouchableOpacity onPress={onPressAvatar}>
         <FastImage source={{uri: avatar}} style={styles.avatar} resizeMode={'stretch'} />
       </TouchableOpacity>
       <View style={styles.txtView}>
-        <TouchableOpacity onPress={onPressGroup}>
-          <Text>{groupName}</Text>
-        </TouchableOpacity>
         <View style={styles.groupNTimeView}>
           <TouchableOpacity onPress={onPressName}>
-            <Text>{userName} </Text>
+            <Text>{userName}</Text>
           </TouchableOpacity>
-          <Text>{time}</Text>
+          <View style={styles.dot} />
+          <Text> {time}</Text>
         </View>
       </View>
       <TouchableOpacity onPress={onPressShare} style={styles.dotThree}>
         <Icon category="Entypo" name="dots-three-horizontal" size={metrics.large} color={colors.black} />
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   )
 }
 

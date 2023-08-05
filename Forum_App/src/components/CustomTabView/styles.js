@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: metrics.paddingHorizontal,
   },
   activeTab: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.denim,
     height: metrics.super_tiny,
     width: '100%',
     position: 'absolute',
