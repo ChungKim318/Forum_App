@@ -63,8 +63,8 @@ const EditProfileView = ({
             title={'Edit Profile'}
             iconRight={<Text style={styles.txtSave}>SAVE</Text>}
             customStyle={styles.headerCustomStyle}
-            onPressIconLeft={onClose}
-            onPressIconRight={onSave}
+            onPressLeft={onClose}
+            onPressRight={onSave}
           />
           <ToastManager duration={10000} position="top" positionHorizontal="right" />
 
@@ -143,7 +143,7 @@ const EditProfileView = ({
                 title={'Add Social Link'}
                 titleStyle={styles.modalTitleStyle}
                 customStyle={styles.modalCustomStyle}
-                onPressIconLeft={handleCloseModal}
+                onPressLeft={handleCloseModal}
               />
               {socialData?.map((item, index) => (
                 <CustomSocialButton

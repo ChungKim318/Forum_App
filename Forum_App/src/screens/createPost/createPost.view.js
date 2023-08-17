@@ -33,8 +33,8 @@ const CreatePostView = ({
           </TouchableOpacity>
         }
         customStyle={styles.headerStyle}
-        onPressIconLeft={onBack}
-        onPressIconRight={onPost}
+        onPressLeft={onBack}
+        onPressRight={onPost}
       />
       {/* // create view scrollable when keyboard is open */}
       <GestureHandlerRootView style={styles.bodyView}>

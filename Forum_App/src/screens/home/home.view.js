@@ -18,7 +18,6 @@ import RouteKey from 'navigation/RouteKey'
 import AppConfigs from 'configs/env'
 
 const HomeView = ({
-  microButton,
   homeData,
   voteNumber,
   onPressMyProfile,
@@ -28,12 +27,16 @@ const HomeView = ({
   onShare,
   onGoUserProfile,
   onPressThreeDots,
+  onGoPostDetail,
+  onSearch,
+  inCrease,
   ...props
 }) => {
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={[styles.newsFeedView, shadow]}>
         <ProfileOver
+          avatar={item.avatar}
           userName={item.username}
           time={item.time}
           onPressAvatar={() => {
@@ -48,15 +51,22 @@ const HomeView = ({
           }}
           onPressShare={onPressThreeDots}
         />
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => {
+            navigate(RouteKey.PostDetailScreen, {
+              avatar: item?.avatar,
+              username: item?.username,
+              groupName: item?.group,
+              content: item?.content,
+              time: item?.time,
+            })
+          }}>
           <NewsFeedItem
             image={
-              <FastImage
-                source={{uri: AppConfigs.IMAGE_DEFAULT}}
-                resizeMode={'contain'}
-                style={styles.image}
-              />
+              <FastImage source={{uri: AppConfigs.NO_IMAGE}} resizeMode={'contain'} style={styles.image} />
             }
+            content={item?.content}
           />
         </TouchableOpacity>
         <View style={styles.slag} />
@@ -83,6 +93,7 @@ const HomeView = ({
       </View>
     )
   }, [])
+
   return (
     <SafeAreaView style={styles.container}>
       <Header
@@ -100,6 +111,7 @@ const HomeView = ({
         iconRightStyle={styles.iconProfileView}
         customStyle={styles.headerCustomStyle}
         onPressIconRight={onPressMyProfile}
+        onPressExtraIcon={onSearch}
         title={'Home'}
         titleStyle={styles.headerTitle}
       />

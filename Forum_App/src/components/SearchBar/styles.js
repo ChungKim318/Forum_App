@@ -18,4 +18,7 @@ export const styles = StyleSheet.create({
     paddingVertical: responsiveHeight(5),
     paddingHorizontal: responsiveWidth(10),
   },
+  searchIcon: {
+    padding: metrics.tiny,
+  },
 })

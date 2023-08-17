@@ -25,4 +25,5 @@ export default {
   EditProfile: 'EditProfile',
   CreateScreen: 'CreateScreen',
   UserProfileScreen: 'UserProfileScreen',
+  PostDetailScreen: 'PostDetailScreen',
 }

@@ -8,6 +8,7 @@ import Icon from 'components/Icon'
 const ProfileOver = ({
   avatar = 'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-9.jpg',
   userName,
+  groupName,
   time,
   onPressShare = () => {},
   onPressAvatar = () => {},
@@ -21,6 +22,7 @@ const ProfileOver = ({
         <FastImage source={{uri: avatar}} style={styles.avatar} resizeMode={'stretch'} />
       </TouchableOpacity>
       <View style={styles.txtView}>
+        {!!groupName && <Text>{groupName}</Text>}
         <View style={styles.groupNTimeView}>
           <TouchableOpacity onPress={onPressName}>
             <Text>{userName}</Text>

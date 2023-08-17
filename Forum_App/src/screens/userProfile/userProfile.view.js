@@ -47,7 +47,7 @@ const UserProfileView = ({username, listTab, onBack, onFollow, ...props}) => {
               <Icon category="Entypo" name="dots-three-horizontal" size={metrics.icon} color={colors.white} />
             }
             customStyle={styles.customHeaderStyle}
-            onPressIconLeft={onBack}
+            onPressLeft={onBack}
           />
           <View style={styles.avatarView}>
             <FastImage source={images.AVATAR} resizeMode={'contain'} style={styles.avatar} />

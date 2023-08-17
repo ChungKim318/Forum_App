@@ -1,6 +1,6 @@
-import AppConfigs from 'configs/env';
+import AppConfigs from 'configs/env'
 
-const BASE_URL = AppConfigs.domain;
+const BASE_URL = AppConfigs.API_URL
 
 export const END_POINT = {
   //AUTH
@@ -8,4 +8,4 @@ export const END_POINT = {
     SIGN_IN: `${BASE_URL}/`,
     SIGN_UP: `${BASE_URL}/`,
   },
-};
+}

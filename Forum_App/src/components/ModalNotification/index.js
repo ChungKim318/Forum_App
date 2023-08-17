@@ -51,6 +51,7 @@ const ModalNotification = ({...props}) => {
       animationOut={'zoomOut'}
       animationInTiming={1000}
       animationOutTiming={600}
+      backdropOpacity={0.6}
       isVisible={isVisible}
       style={styles.modalWrapper}>
       <View style={styles.modalContainer}>

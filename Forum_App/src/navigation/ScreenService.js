@@ -15,6 +15,7 @@ import ProfileContainer from 'screens/profile/profile.container'
 import EditProfileContainer from 'screens/editProfile/editProfile.container'
 import CreateContainer from 'screens/create/create.container'
 import UserProfileContainer from 'screens/userProfile/userProfile.container'
+import PostDetailContainer from 'screens/postDetail/postDetail.container'
 
 export const screenMatch = screen => {
   switch (screen) {
@@ -45,6 +46,8 @@ export const screenMatch = screen => {
       return CreateContainer
     case RouteKey.UserProfileScreen:
       return UserProfileContainer
+    case RouteKey.PostDetailScreen:
+      return PostDetailContainer
     default:
       return ''
   }

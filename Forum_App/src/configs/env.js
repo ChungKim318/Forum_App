@@ -1,11 +1,11 @@
 const config = {
-  API_URL: '',
+  domain: 'https://online-forum-chat.onrender.com',
   AVATAR_DEFAULT:
-    'https://cdn-icons-png.flaticon.com/512/149/149071.png?w=826&t=st=1688958223~exp=1688958823~hmac=fbc4d8da2ee9868f5eb29506e57f01906f40be04af07a68a079a48c26d690e56',
+    'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png',
   IMAGE_DEFAULT:
     'https://img.freepik.com/free-vector/abstract-dynamic-pattern-wallpaper-vector_53876-59186.jpg?size=626&ext=jpg',
-  JWT_CLIENT_ID: 'nzmgsPsoJdI46edyrZDmpTRI84jWIzzU',
-  JWT_DOMAIN: 'dev-xye8t1re4ptd8y75.us.auth0.com',
+  NO_IMAGE: 'https://www.freeiconspng.com/uploads/no-image-icon-4.png',
+  API_URL: 'https://online-forum-chat.onrender.com/api/v1',
 }
 
 const AppConfigs = config

@@ -49,7 +49,7 @@ const ProfileView = ({
             }
             title={'My Profile'}
             titleStyle={styles.headerTitleStyle}
-            onPressIconLeft={onPressBack}
+            onPressLeft={onPressBack}
             iconRight={
               <Icon
                 category="Entypo"

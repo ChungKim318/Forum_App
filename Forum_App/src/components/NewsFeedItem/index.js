@@ -7,7 +7,11 @@ import FastImage from 'react-native-fast-image'
 const NewsFeedItem = ({content, image, ...props}) => {
   return (
     <View style={styles.container}>
-      {!!content && <Text style={styles.txtContent}>{content}</Text>}
+      {!!content && (
+        <Text numberOfLines={5} style={styles.txtContent}>
+          {content}
+        </Text>
+      )}
       {!!image && image}
     </View>
   )
