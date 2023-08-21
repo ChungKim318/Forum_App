@@ -1,17 +1,17 @@
-import {AUTH, actionTypes} from 'actionTypes'
+import {AUTH} from 'actionTypes'
 
-export const loginUsernameHandle = (payload, onSuccess = () => {}) => ({
+export const loginHandle = (payload, onSuccess = () => {}) => ({
   type: AUTH.LOG_IN.HANDLER,
   payload,
   onSuccess,
 })
 
-export const loginUsernameSuccess = payload => ({
+export const loginSuccess = payload => ({
   type: AUTH.LOG_IN.SUCCESS,
   payload,
 })
 
-export const loginUsernameFailed = error => ({
+export const loginFailed = error => ({
   type: AUTH.LOG_IN.FAILURE,
   error,
 })
@@ -29,5 +29,19 @@ export const signupSuccess = payload => ({
 
 export const signupFailed = error => ({
   type: AUTH.SIGN_UP.FAILURE,
+  error,
+})
+
+export const refreshTokenHandle = () => ({
+  type: AUTH.REFRESH_TOKEN.HANDLER,
+})
+
+export const refreshTokenSuccess = payload => ({
+  type: AUTH.REFRESH_TOKEN.SUCCESS,
+  payload,
+})
+
+export const refreshTokenFailed = error => ({
+  type: AUTH.REFRESH_TOKEN.FAILURE,
   error,
 })

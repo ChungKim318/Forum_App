@@ -8,6 +8,7 @@ export const actionTypes = actionName => ({
 export const AUTH = {
   LOG_IN: actionTypes('AUTH/LOG_IN'),
   SIGN_UP: actionTypes('AUTH/SIGN_UP'),
+  REFRESH_TOKEN: actionTypes('AUTH/REFRESH_TOKEN'),
 }
 
 export const PROFILE = {

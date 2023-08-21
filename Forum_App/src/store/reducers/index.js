@@ -5,12 +5,12 @@ import loadingReducer from './loading'
 import authReducer from './auth'
 import profileReducer from './profile'
 
-const authPersistConfig = {
-  key: 'auth',
-  storage: AsyncStorage,
-  whiteList: [],
-  version: 1.0,
-}
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage: AsyncStorage,
+//   whiteList: [],
+//   version: 1.0,
+// }
 
 const profilePersistConfig = {
   key: 'profile',
@@ -21,7 +21,7 @@ const profilePersistConfig = {
 
 const rootReducer = combineReducers({
   loadingReducer,
-  authReducer: persistReducer(authPersistConfig, authReducer),
+  authReducer: authReducer,
   profileReducer: persistReducer(profilePersistConfig, profileReducer),
 })
 

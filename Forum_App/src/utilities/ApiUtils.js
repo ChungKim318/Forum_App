@@ -17,6 +17,7 @@ const axiosInstance = axios.create({
   },
   baseURL: domain,
 })
+
 function isTokenExpired(token) {
   var decoded = jwt_decode(token)
 
@@ -29,14 +30,15 @@ function isTokenExpired(token) {
     return false
   }
 }
+
 axiosInstance.interceptors.request.use(
   async function (config) {
-    if (!APIUtils.token) {
+    if (!APIUtils.accessToken) {
       return config
     }
-    if (!isTokenExpired(APIUtils.token)) {
-      // config.headers.Authorization = `Bearer ${APIUtils.token}`
-      config.headers['Authorization'] = `Bearer ${APIUtils.token}`
+    if (!isTokenExpired(APIUtils.accessToken)) {
+      // config.headers.Authorization = `Bearer ${APIUtils.accessToken}`
+      config.headers['Authorization'] = `Bearer ${APIUtils.accessToken}`
       console.log('config: ', config)
       return config
     } else {
@@ -63,6 +65,7 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error)
   },
 )
+
 axiosInstance.interceptors.response.use(
   function (response) {
     return response
@@ -103,6 +106,7 @@ export default class APIUtils {
   static accessToken = ''
   static setAccessToken = accessToken => {
     APIUtils.accessToken = accessToken
+    console.log('APIUtils.accessToken', APIUtils.accessToken)
   }
   static get(url, config = {headers: {}, params: {}}) {
     return new Promise(async (resolve, reject) => {
