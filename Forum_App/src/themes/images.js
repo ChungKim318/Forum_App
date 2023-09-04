@@ -6,4 +6,8 @@ export const images = {
   LIKE: require('assets/images/icon_like_reaction.png'),
   LOVE: require('assets/images/icon_love_reaction.png'),
   WOW: require('assets/images/icon_wow_reaction.png'),
-};
+  DEFAULT_AVATAR: require('assets/images/blank_avatar.png'),
+  LOGO: require('assets/images/main-logo.png'),
+  BLANK_CHAT: require('assets/images/blank-chat.png'),
+  AVATAR: require('assets/images/image-user.png'),
+}

@@ -22,4 +22,8 @@ export default {
   SettingScreen: 'SettingScreen',
   SearchScreen: 'SearchScreen',
   ProfileScreen: 'ProfileScreen',
-};
+  EditProfile: 'EditProfile',
+  CreateScreen: 'CreateScreen',
+  UserProfileScreen: 'UserProfileScreen',
+  PostDetailScreen: 'PostDetailScreen',
+}

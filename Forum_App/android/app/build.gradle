@@ -130,7 +130,7 @@ def reactNativeArchitectures() {
 }
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
+    ndkVersion '22.1.7171670'
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -218,6 +218,9 @@ android {
             keyPassword 'android'
         }
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_11
+    }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
@@ -252,12 +255,20 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.facebook.react:react-native:0.70.7'  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
-    debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
+    debugImplementation("com.facebook.flipper:flipper:$FLIPPER_VERSION") {
         exclude group:'com.facebook.fbjni'
+    }
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
     }
 
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {

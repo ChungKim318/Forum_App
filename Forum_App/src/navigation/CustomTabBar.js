@@ -1,11 +1,11 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {responsiveHeight} from 'themes';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import React from 'react'
+import {SafeAreaView} from 'react-native-safe-area-context'
+import {responsiveHeight} from 'themes'
 
 function CustomTabBar({routeName, navigation}) {
   function renderItem(item, index) {
-    const {route, title} = item;
+    const {route, title} = item
     return (
       <TouchableOpacity
         activeOpacity={1}
@@ -13,22 +13,22 @@ function CustomTabBar({routeName, navigation}) {
         style={styles.itemContainer}
         onPress={() => {
           if (route) {
-            navigation.navigate(route);
+            navigation.navigate(route)
           }
         }}>
         <Text style={[styles.title]}>{title}</Text>
       </TouchableOpacity>
-    );
+    )
   }
 
   return (
     <SafeAreaView edges={['bottom']} style={styles.container}>
       <View style={styles.wrapper}>{[].map(renderItem)}</View>
     </SafeAreaView>
-  );
+  )
 }
 
-export default CustomTabBar;
+export default CustomTabBar
 
 const styles = StyleSheet.create({
   container: {
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   title: {},
-});
+})

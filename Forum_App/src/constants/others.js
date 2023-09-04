@@ -1,11 +1,11 @@
-import {images} from 'themes';
+import {images} from 'themes'
 
-export const PAGE_SIZE = 10;
+export const PAGE_SIZE = 10
 
 export const MAX_LENGTH = {
   EMAIL: 256,
   PASSWORD: 50,
-};
+}
 
 export const EVENT_EMITTER = {
   SHOW_SHEET: 'SHOW_SHEET',
@@ -13,13 +13,13 @@ export const EVENT_EMITTER = {
   SHOW_PAYMENT_MODAL: 'SHOW_PAYMENT_MODAL',
   SHOW_EMPTY_MODAL: 'SHOW_EMPTY_MODAL',
   SHOW_DISCOUNT_MODAL: 'SHOW_DISCOUNT_MODAL',
-};
+}
 
 export const NOTIFICATION_TYPE = {
   NEW_MESSAGE: 'NEW_MESSAGE',
-  ID: 'GAMANI',
-  CHANNEL: 'GAMANI_CHANNEL',
-};
+  ID: 'ID',
+  CHANNEL: 'CHANNEL',
+}
 
 export const MESSAGE_TYPE = {
   VIDEO: 0,
@@ -27,13 +27,13 @@ export const MESSAGE_TYPE = {
   MESSAGE: 2,
   RECORD: 3,
   FILE: 4,
-};
+}
 
 export const ATTACHMENT_MESSAGE_TYPE = {
   FILE: 'FILE',
   IMAGE: 'IMAGE',
   RECORD: 'RECORD',
-};
+}
 
 export const REACTION_TYPE = {
   LIKE: {
@@ -64,4 +64,4 @@ export const REACTION_TYPE = {
     value: 'ANGRY',
     icons: images.ANGRY,
   },
-};
+}

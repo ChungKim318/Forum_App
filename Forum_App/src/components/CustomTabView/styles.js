@@ -1,22 +1,23 @@
-import {StyleSheet} from 'react-native';
-import {colors, FontFamily, FontSizes, metrics, responsiveHeight} from 'themes';
+import {StyleSheet} from 'react-native'
+import {colors, FontFamily, FontSizes, metrics, responsiveHeight} from 'themes'
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
   wrapper: {
     height: responsiveHeight(600),
   },
   tabBarWrapper: {
     flexDirection: 'row',
-    height: responsiveHeight(30),
+    height: responsiveHeight(40),
     backgroundColor: colors.white,
     paddingHorizontal: metrics.paddingHorizontal,
     marginBottom: metrics.small,
   },
   tabWrapper: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   tabTitleTxt: {
     color: colors.black,
@@ -25,10 +26,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: metrics.paddingHorizontal,
   },
   activeTab: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.denim,
     height: metrics.super_tiny,
     width: '100%',
     position: 'absolute',
     bottom: 0,
   },
-});
+})
