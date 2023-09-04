@@ -67,7 +67,7 @@ export function* createPostSaga(action) {
     const res = yield call(PostApi.createPostApi, title, content, topicName)
     console.log('----------Res createPostSaga----------', res?.data)
 
-    // yield put(getPostHandler())
+    yield put(getPostHandler())
 
     yield put(createPostSuccess())
 

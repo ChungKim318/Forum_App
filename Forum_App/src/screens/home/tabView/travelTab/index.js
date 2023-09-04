@@ -8,17 +8,29 @@ import NewsFeedItem from 'components/NewsFeedItem'
 import RouteKey from 'navigation/RouteKey'
 import {FlashList} from '@shopify/flash-list'
 import {useDispatch} from 'react-redux'
+import {useIsFocused} from '@react-navigation/native'
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 
 const TravelTab = ({topicId, ...props}) => {
   const [postList, setPostList] = useState([])
   const [isFetching, setIsFetching] = useState(false)
 
   const dispatch = useDispatch()
+  const isFocused = useIsFocused()
+
+  let TIME_INTERVAL = null
 
   useEffect(() => {
-    setIsFetching(true)
-    dispatch(getPostHandler(topicId, setPostList))
-  }, [])
+    if (isFocused === true) {
+      setIsFetching(true)
+      dispatch(
+        getPostHandler(topicId, res => {
+          setPostList(res)
+          setIsFetching(false)
+        }),
+      )
+    }
+  }, [isFocused])
 
   // console.log('TechTab22', postList)
 
@@ -28,12 +40,15 @@ const TravelTab = ({topicId, ...props}) => {
 
   const renderEmpty = useCallback(() => {
     if (isFetching) {
-      return (
-        <View style={styles.emptyView}>
-          <Text style={styles.emptyTxt}>No post</Text>
+      return [1, 2, 3, 4, 5].map((item, index) => (
+        <View key={index.toString()}>
+          <SkeletonPlaceholder>
+            <View style={styles.skeletonNewsFeedView} />
+          </SkeletonPlaceholder>
         </View>
-      )
+      ))
     }
+    return <Text style={styles.emptyTxt}>Don't have post</Text>
   }, [isFetching])
 
   const renderItem = useCallback(({item, index}) => {

@@ -35,5 +35,12 @@ export const styles = StyleSheet.create({
   emptyTxt: {
     fontSize: FontSizes.MEDIUM,
     fontFamily: FontFamily.MEDIUM,
+    textAlign: 'center',
+    color: colors.dove_gray,
+  },
+  skeletonNewsFeedView: {
+    height: responsiveHeight(200),
+    marginHorizontal: metrics.span,
+    marginBottom: metrics.span,
   },
 })
