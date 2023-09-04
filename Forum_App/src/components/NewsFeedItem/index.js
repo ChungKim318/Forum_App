@@ -4,11 +4,12 @@ import {styles} from './styles'
 import {shadow} from 'themes'
 import FastImage from 'react-native-fast-image'
 
-const NewsFeedItem = ({content, image, ...props}) => {
+const NewsFeedItem = ({title, content, numberOfLines, image, ...props}) => {
   return (
     <View style={styles.container}>
+      {!!title && <Text style={styles.txtTitle}>{title}</Text>}
       {!!content && (
-        <Text numberOfLines={5} style={styles.txtContent}>
+        <Text numberOfLines={numberOfLines} style={styles.txtContent}>
           {content}
         </Text>
       )}

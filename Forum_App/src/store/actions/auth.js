@@ -1,8 +1,9 @@
 import {AUTH} from 'actionTypes'
 
-export const loginHandle = (payload, onSuccess = () => {}) => ({
+export const loginHandle = (email, password, onSuccess = () => {}) => ({
   type: AUTH.LOG_IN.HANDLER,
-  payload,
+  email,
+  password,
   onSuccess,
 })
 
@@ -16,9 +17,13 @@ export const loginFailed = error => ({
   error,
 })
 
-export const signupHandle = (payload, onSuccess = () => {}) => ({
+export const signupHandle = (firstname, lastname, username, email, password, onSuccess = () => {}) => ({
   type: AUTH.SIGN_UP.HANDLER,
-  payload,
+  firstname,
+  lastname,
+  username,
+  email,
+  password,
   onSuccess,
 })
 
@@ -32,16 +37,16 @@ export const signupFailed = error => ({
   error,
 })
 
-export const refreshTokenHandle = () => ({
-  type: AUTH.REFRESH_TOKEN.HANDLER,
+export const logoutHandle = () => ({
+  type: AUTH.LOGOUT.HANDLER,
 })
 
-export const refreshTokenSuccess = payload => ({
-  type: AUTH.REFRESH_TOKEN.SUCCESS,
+export const logoutSuccess = payload => ({
+  type: AUTH.LOGOUT.SUCCESS,
   payload,
 })
 
-export const refreshTokenFailed = error => ({
-  type: AUTH.REFRESH_TOKEN.FAILURE,
+export const logoutFailed = error => ({
+  type: AUTH.LOGOUT.FAILURE,
   error,
 })

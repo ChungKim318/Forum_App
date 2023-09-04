@@ -7,6 +7,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context'
 import AppNavigation from 'navigation/AppNavigation'
 import ModalNotification from 'components/ModalNotification'
 import CustomModal from 'components/CustomModal'
+import TestScreen from 'screens/test'
 
 const MainLayout = () => {
   useEffect(() => {
@@ -20,6 +21,7 @@ const MainLayout = () => {
       <PersistGate loading={null} persistor={storeConfig.persistor}>
         <SafeAreaProvider>
           <AppNavigation />
+          {/* <TestScreen /> */}
           <ModalNotification />
           <CustomModal />
         </SafeAreaProvider>

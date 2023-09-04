@@ -3,11 +3,16 @@ import SignUpView from './signUp.view'
 import {useDispatch} from 'react-redux'
 import {navigate} from 'navigation/NavigationServices'
 import RouteKey from 'navigation/RouteKey'
+import {signupHandle} from 'actions/auth'
+import withLoading from 'HOC/index'
+import {AUTH} from 'actionTypes'
 
 const signUpForm = {
+  firstname: '',
+  lastname: '',
+  username: '',
   email: '',
   password: '',
-  re_password: '',
 }
 
 const SignUpContainer = ({...props}) => {
@@ -17,7 +22,15 @@ const SignUpContainer = ({...props}) => {
   const [initialForm, setInitialForm] = useState(signUpForm)
 
   const onPressSignUp = useCallback(() => {
-    dispatch(signUpHandle(formikRef?.current?.values?.email, formikRef?.current?.values?.password))
+    dispatch(
+      signupHandle(
+        formikRef?.current?.values?.firstname,
+        formikRef?.current?.values?.lastname,
+        formikRef?.current?.values?.username,
+        formikRef?.current?.values?.email,
+        formikRef?.current?.values?.password,
+      ),
+    )
   }, [])
 
   const onPressSignIn = useCallback(() => {

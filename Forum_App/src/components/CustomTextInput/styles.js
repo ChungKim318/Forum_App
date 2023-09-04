@@ -3,7 +3,7 @@ import {colors, FontSizes, FontFamily, responsiveHeight, responsiveWidth} from '
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
   inputView: {
     // height: responsiveHeight(50),

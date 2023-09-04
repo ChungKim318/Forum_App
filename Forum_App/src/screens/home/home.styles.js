@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import {colors, metrics, responsiveHeight, responsiveWidth} from 'themes'
+import {FontFamily, FontSizes, colors, metrics, responsiveHeight, responsiveWidth} from 'themes'
 
 export const styles = StyleSheet.create({
   container: {
@@ -42,5 +42,23 @@ export const styles = StyleSheet.create({
   },
   image: {
     height: responsiveHeight(200),
+  },
+  tabBar: {
+    backgroundColor: colors.white,
+    width: '100%',
+  },
+  labelStyle: {
+    color: colors.black,
+    fontSize: FontSizes.SMALL,
+    fontFamily: FontFamily.MEDIUM,
+  },
+  tabBarWrapperStyle: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.white,
+  },
+  indicatorStyle: {
+    backgroundColor: colors.denim,
   },
 })

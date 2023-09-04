@@ -14,9 +14,9 @@ const SignUpView = ({formikRef, initialForm, signUpForm, onPressSignUp, onPressS
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAwareScrollView
-        contentContainerStyle={styles.scrollContainer}
+        style={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
-        extraHeight={200}>
+        extraHeight={80}>
         <View style={styles.headerView}>
           <FastImage source={images.LOGO} resizeMode="contain" style={styles.logoImage} />
           <Text style={styles.txtWelcome}>Welcome</Text>
@@ -46,7 +46,54 @@ const SignUpView = ({formikRef, initialForm, signUpForm, onPressSignUp, onPressS
                 <React.Fragment>
                   <View style={styles.inputContainer}>
                     <CustomTextInput
-                      placeHolder={'Username'}
+                      title={'First Name'}
+                      placeholder={'First Name'}
+                      textInputStyle={styles.textInputStyle}
+                      value={values.firstname}
+                      errorMessage={errors.firstname}
+                      onChange={txtFirstName => {
+                        setFieldValue('firstname', txtFirstName)
+                      }}
+                      onBlur={handleBlur('firstname')}
+                      isSecure={false}
+                      isTouched={touched.firstname}
+                    />
+                  </View>
+                  <View style={styles.inputContainer}>
+                    <CustomTextInput
+                      title={'Last Name'}
+                      placeholder={'Last Name'}
+                      textInputStyle={styles.textInputStyle}
+                      value={values.lastname}
+                      errorMessage={errors.lastname}
+                      onChange={txtLastName => {
+                        setFieldValue('lastname', txtLastName)
+                      }}
+                      onBlur={handleBlur('lastname')}
+                      isSecure={false}
+                      isTouched={touched.lastname}
+                    />
+                  </View>
+
+                  <View style={styles.inputContainer}>
+                    <CustomTextInput
+                      title={'Username'}
+                      placeholder={'Username'}
+                      textInputStyle={styles.textInputStyle}
+                      value={values.username}
+                      errorMessage={errors.username}
+                      onChange={txtUsername => {
+                        setFieldValue('username', txtUsername)
+                      }}
+                      onBlur={handleBlur('username')}
+                      isSecure={false}
+                      isTouched={touched.username}
+                    />
+                  </View>
+                  <View style={styles.inputContainer}>
+                    <CustomTextInput
+                      title={'Email'}
+                      placeholder={'Email'}
                       textInputStyle={styles.textInputStyle}
                       value={values.email}
                       errorMessage={errors.email}
@@ -60,7 +107,8 @@ const SignUpView = ({formikRef, initialForm, signUpForm, onPressSignUp, onPressS
                   </View>
                   <View style={styles.inputContainer}>
                     <CustomTextInput
-                      placeHolder={'Password'}
+                      title={'Password'}
+                      placeholder={'Password'}
                       textInputStyle={styles.textInputStyle}
                       value={values.password}
                       errorMessage={errors.password}
@@ -72,29 +120,17 @@ const SignUpView = ({formikRef, initialForm, signUpForm, onPressSignUp, onPressS
                       isTouched={touched.password}
                     />
                   </View>
-                  <View style={styles.inputContainer}>
-                    <CustomTextInput
-                      placeHolder={'Re-password'}
-                      textInputStyle={styles.textInputStyle}
-                      value={values.re_password}
-                      errorMessage={errors.re_password}
-                      onChange={txtRePassword => {
-                        setFieldValue('Re-password', txtRePassword)
-                      }}
-                      onBlur={handleBlur('re_password')}
-                      isSecure={true}
-                      isTouched={touched.re_password}
-                    />
-                  </View>
 
-                  <TouchableOpacity activeOpacity={0.8} onPress={onPressSignIn}>
+                  <TouchableOpacity activeOpacity={0.8} onPress={onPressSignIn} style={styles.signInView}>
                     <Text style={styles.txtSignIn}>I have an account</Text>
                   </TouchableOpacity>
                   <View style={styles.buttonSignup}>
                     <CustomButton
+                      disable={!isValid}
                       title={'Sign Up'}
                       styleButton={styles.styleButton}
                       styleText={styles.styleText}
+                      onPress={onPressSignUp}
                     />
                   </View>
                 </React.Fragment>

@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   },
   mainLogo: {
     width: metrics.logoWidth,
-    height: responsiveHeight(150),
+    height: responsiveHeight(120),
     alignSelf: 'center',
   },
   textInputStyle: {

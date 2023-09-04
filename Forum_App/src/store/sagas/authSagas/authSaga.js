@@ -1,91 +1,86 @@
-import {loginHandle, loginSuccess, loginFailed, signupFailed, signupSuccess} from 'actions/auth'
+import {
+  loginHandle,
+  loginSuccess,
+  loginFailed,
+  signupFailed,
+  signupSuccess,
+  logoutFailed,
+  logoutSuccess,
+} from 'actions/auth'
 import {addProfileHandle, addProfileSuccess} from 'actions/profile'
 import {KEY_STORAGE} from 'constants/storage'
-import {setData, getData} from 'helpers/storage'
-import {call, put, takeLatest} from 'redux-saga/effects'
+import {setData, getData, removeData, clearAllData} from 'helpers/storage'
+import {call, put} from 'redux-saga/effects'
 import {AuthApi} from 'services'
 import APIUtils from 'utilities/ApiUtils'
-import jwt_decode from 'jwt-decode'
 import {sendMessageOnlyRead} from 'helpers/sendNotification'
+import {navigate, replace} from 'navigation/NavigationServices'
+import RouteKey from 'navigation/RouteKey'
 
 export function* loginUsernameSaga(obj) {
-  const {payload, onSuccess} = obj
+  const {email, password, onSuccess} = obj
 
   try {
-    const res = yield call(AuthApi, payload)
+    const res = yield call(AuthApi.loginApi, email, password)
 
-    if (res?.data?.statusCode === 200) {
-      console.log('----------RES----------', res?.data?.data)
+    // if (res?.data?.Code === 200) {
+    console.log('----------RES----------', res?.data)
 
-      yield setData(KEY_STORAGE.ACCESS_TOKEN, res?.data?.data?.accessToken)
+    yield setData(KEY_STORAGE.ACCESS_TOKEN, res?.data?.access_token)
 
-      yield setData(KEY_STORAGE.REFRESH_TOKEN, res?.data?.data?.refreshToken)
+    yield setData(KEY_STORAGE.REFRESH_TOKEN, res?.data?.refresh_token)
 
-      onSuccess?.(res?.data?.data)
+    onSuccess?.(res?.data)
 
-      yield put(addProfileSuccess(response?.data?.data))
+    yield APIUtils.setAccessToken(res?.data?.access_token)
 
-      yield APIUtils.setAccessToken(response?.data?.token)
-
-      yield put(loginSuccess())
-    } else {
-      yield put(loginFailed(res?.data?.data))
-      yield sendMessageOnlyRead(res?.data?.message)
-    }
+    yield put(loginSuccess(res?.data))
   } catch (error) {
+    //    else {
+    //     yield put(loginFailed(res?.data?.data))
+    //     yield sendMessageOnlyRead(res?.data?.message)
+    //   }
+    // }
     yield put(loginFailed(error))
     yield sendMessageOnlyRead(error?.message)
   }
 }
 
 export function* signupSaga(obj) {
-  const {payload, onSuccess} = obj
+  const {firstname, lastname, username, email, password, onSuccess} = obj
 
   try {
-    const res = yield call(AuthApi, payload)
-    if (res?.data?.statusCode === 200) {
-      console.log('----------RES----------', res?.data?.data)
+    const res = yield call(AuthApi.signupApi, firstname, lastname, username, email, password)
 
-      yield put(signupSuccess())
-    } else {
-      yield put(signupFailed(res?.data?.data))
-    }
+    console.log('----------RES----------', res?.data)
+
+    // onSuccess?.(res?.data)
+
+    // yield put(signupSuccess(res?.data))
+
+    yield sendMessageOnlyRead('Sign up successfully')
+
+    yield replace(RouteKey.SignInScreen)
   } catch (error) {
-    yield put(signupFailed(error))
+    if (error?.status === 400) {
+      yield put(signupFailed(error))
+      yield sendMessageOnlyRead('Email or username already exists')
+    } else {
+      yield put(signupFailed(error))
+      yield sendMessageOnlyRead(error?.message)
+    }
   }
 }
 
-export function* loginSaga(action) {
-  const {payload} = action
+export function* logoutSaga(obj) {
+  const {payload} = obj
   try {
-    const res = yield call(AuthApi, payload)
-    // if (res?.data?.statusCode === 200) {
-    const accessToken = res?.data?.data?.accessToken
-    const refreshToken = res?.data?.data?.refreshToken
-    yield setData(KEY_STORAGE.ACCESS_TOKEN, accessToken)
-    yield setData(KEY_STORAGE.REFRESH_TOKEN, refreshToken)
-    const decodedAccessToken = jwt_decode(accessToken)
-    const decodedRefreshToken = jwt_decode(refreshToken)
-    const accessTokenExp = decodedAccessToken.exp
-    const refreshTokenExp = decodedRefreshToken.exp
-    const currentTime = Date.now() / 1000
-    const accessTokenTimeLeft = accessTokenExp - currentTime
-    const refreshTokenTimeLeft = refreshTokenExp - currentTime
-    if (accessTokenTimeLeft < 0) {
-      const newAccessToken = yield call(AuthApi.refreshToken, refreshToken)
-      yield setData(KEY_STORAGE.ACCESS_TOKEN, newAccessToken)
-    }
-    if (refreshTokenTimeLeft < 0) {
-      yield put(loginFailed('Refresh token expired'))
-    }
-    yield put(loginSuccess())
-
-    yield put(addProfileHandle(res?.data?.data))
-    // }
-    // else {
-    //   yield put(loginUsernameFailed(res?.data?.data));
-    // }
+    yield removeData(KEY_STORAGE.ACCESS_TOKEN)
+    yield removeData(KEY_STORAGE.REFRESH_TOKEN)
+    yield clearAllData()
+    yield put(logoutSuccess())
   } catch (error) {
-    yield put(loginFailed(error))
+    yield put(logoutFailed(error))
+    yield sendMessageOnlyRead(error?.message)
   }
 }

@@ -28,4 +28,8 @@ export const styles = StyleSheet.create({
     paddingTop: responsiveHeight(10),
     paddingBottom: responsiveHeight(70),
   },
+  newsFeedView: {
+    backgroundColor: colors.white,
+    marginVertical: metrics.span,
+  },
 })

@@ -1,12 +1,14 @@
-import {FlatList, Text, View} from 'react-native'
+import {FlatList, Text, TouchableOpacity, View} from 'react-native'
 import React, {useCallback} from 'react'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {styles} from './discover.styles'
 import HeaderSearch from 'components/HeaderSearch'
 import Icon from 'components/Icon'
-import {colors, metrics, responsiveHeight, responsiveWidth} from 'themes'
+import {colors, metrics, responsiveHeight, responsiveWidth, shadow} from 'themes'
 import {KeyboardAwareFlatList} from 'react-native-keyboard-aware-scroll-view'
 import {MasonryFlashList} from '@shopify/flash-list'
+import ProfileOver from 'components/ProfileOver'
+import NewsFeedItem from 'components/NewsFeedItem'
 
 const ITEM_HEIGHT = responsiveHeight(180)
 
@@ -50,15 +52,13 @@ const DiscoverView = ({flatListData, onPressProfile, ...props}) => {
         customStyle={styles.headerStyle}
       />
       <View style={styles.bodyView}>
-        <MasonryFlashList
-          showsVerticalScrollIndicator={false}
-          data={flatListData}
-          renderItem={renderItem}
-          estimatedItemSize={200}
-          keyExtractor={(item, index) => item.id.toString() + index.toString()}
-          numColumns={2}
-          contentContainerStyle={styles.contentContainerStyle}
-        />
+        <View style={[styles.newsFeedView, shadow]}>
+          <ProfileOver userName={'admin'} />
+          <TouchableOpacity activeOpacity={0.8}>
+            <NewsFeedItem content={'day la content'} numberOfLines={5} />
+          </TouchableOpacity>
+          <View style={styles.slag} />
+        </View>
       </View>
     </SafeAreaView>
   )

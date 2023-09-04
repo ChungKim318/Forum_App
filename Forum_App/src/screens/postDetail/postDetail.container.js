@@ -4,80 +4,91 @@ import PostDetailView from './postDetail.view'
 import {goBack, navigate} from 'navigation/NavigationServices'
 import RouteKey from 'navigation/RouteKey'
 import {sendMessageOnlyRead} from 'helpers/sendNotification'
+import {useDispatch} from 'react-redux'
+import {getPostDetailHandler} from 'actions/post'
+import {createCommentHandle, getAllCommentHandle} from 'actions/comment'
+import withLoading from 'HOC/index'
+import {BOT, COMMENT, POST} from 'actionTypes'
+import {getAnswerHandle} from 'actions/bot'
 
 const PostDetailContainer = ({...props}) => {
-  const {avatar, username, groupName, content, time} = props.route.params
+  const {avatar, id, userName, content, title, topicName} = props.route.params
   const userAvatar = ''
-  const [numbers, setNumbers] = useState(0)
-  const commentNum = '0'
+  const [postDetail, setPostDetail] = useState([])
+  const [commentList, setCommentList] = useState([])
+  const [aiAnswer, setAiAnswer] = useState([])
+  const [comment, setComment] = useState('')
+  const dispatch = useDispatch()
 
-  const bottomSheetRef = useRef(null)
   const inputRef = useRef(null)
 
-  const snapPoints = useMemo(() => ['5%', '25%'], [])
+  useEffect(() => {
+    // console.log('PostDetailContainer', props.route.params)
+    dispatch(getPostDetailHandler(id, setPostDetail))
+  }, [id])
 
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index)
-    inputRef?.current?.focus()
+  useEffect(() => {
+    dispatch(getAllCommentHandle(id, setCommentList))
+  }, [id])
+
+  // const getAiAnswer = useCallback(() => {
+  //   dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
+  // }, [postDetail?.content])
+
+  useEffect(() => {
+    dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
+  }, [postDetail?.content])
+
+  console.log('AI ANSWER', aiAnswer)
+
+  const onChangeComment = useCallback(text => {
+    setComment(text)
   }, [])
-
-  const handlePresentModalPress = useCallback(() => {
-    bottomSheetRef.current?.present()
-  }, [])
-
-  // useEffect(() => {
-  //   console.log('PostDetailContainer', props.route.params)
-  // }, [])
+  // console.log('PostDetailContainer', commentList)
 
   const onBack = useCallback(() => {
     goBack()
   }, [])
 
-  const onShare = useCallback(() => {}, [])
+  const onPressEdit = useCallback(() => {
+    //Edit Post
+  }, [])
 
   const goMyProfile = useCallback(() => {
     navigate(RouteKey.ProfileScreen)
   }, [])
 
-  const inCrease = useCallback(() => {
-    setNumbers(numbers + 1)
-    // console.log('🚀 ~ file: postDetail.container.js:14 ~ inCrease ~ numbers:', numbers)
-  }, [numbers])
-
-  const deCrease = useCallback(
-    prev => {
-      setNumbers(prev => prev - 1)
-      // console.log('🚀 ~ file: postDetail.container.js:14 ~ inCrease ~ numbers:', numbers)
-      if (numbers <= 0) {
-        setNumbers(0)
-        sendMessageOnlyRead('Vote number is 0. \n Cannot Downvote now!!')
-      }
-    },
-    [numbers],
-  )
+  const onSearch = useCallback(() => {
+    dispatch(createCommentHandle(id, comment))
+  }, [id, comment])
 
   return (
     <PostDetailView
-      bottomSheetRef={bottomSheetRef}
       inputRef={inputRef}
-      snapPoints={snapPoints}
-      numbers={numbers}
-      commentNum={commentNum}
       userAvatar={userAvatar}
       avatar={avatar}
-      username={username}
-      groupName={groupName}
+      id={id}
+      userName={userName}
       content={content}
-      time={time}
+      title={title}
+      topicName={topicName}
+      postDetail={postDetail}
       onBack={onBack}
-      onShare={onShare}
       goMyProfile={goMyProfile}
-      inCrease={inCrease}
-      deCrease={deCrease}
-      handleSheetChanges={handleSheetChanges}
-      handlePresentModalPress={handlePresentModalPress}
+      onSearch={onSearch}
+      onPressEdit={onPressEdit}
+      commentList={commentList}
+      comment={comment}
+      onChangeComment={onChangeComment}
+      aiAnswer={aiAnswer}
+      // getAiAnswer={getAiAnswer}
     />
   )
 }
 
-export default PostDetailContainer
+export default withLoading(PostDetailContainer, [
+  POST.GET_DETAIL.HANDLER,
+  COMMENT.GET_ALL.HANDLER,
+  COMMENT.CREATE.HANDLER,
+  BOT.GET.HANDLER,
+])

@@ -6,36 +6,32 @@ export const loginYupSchema = Yup.object().shape({
     .required('Vui lòng điền đầy đủ thông tin!')
     .max(256, 'Độ dài email không được lớn hơn 256 ký tự !'),
   password: Yup.string()
-    .min(8, 'Độ dài password phải từ 8 ký tự trở lên !')
+    .min(6, 'Độ dài password phải từ 6 ký tự trở lên !')
     .max(60, 'Độ dài email không được lớn hơn 60 ký tự !')
-    .required('Vui lòng điền đầy đủ thông tin !')
-    .matches(/[A-Z]/g, 'Phải có chữ in hoa')
-    .matches(/[a-z]/g, 'Phải có chữ thường')
-    .matches(/[0-9]/g, 'Phải có số')
-    .matches(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/, 'Phải có ký tự đặc biệt'),
+    .required('Vui lòng điền đầy đủ thông tin !'),
 })
 
 export const signupSchema = Yup.object().shape({
+  firstname: Yup.string()
+    .matches(/^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/g, 'Tên không hợp lệ !')
+    .max(50, `Độ dài tên không được quá 50 kí tự !`)
+    .required('Vui lòng điền đầy đủ thông tin !'),
+  lastname: Yup.string()
+    .matches(/^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/g, 'Tên không hợp lệ !')
+    .max(50, `Độ dài tên không được quá 50 kí tự !`)
+    .required('Vui lòng điền đầy đủ thông tin !'),
+  username: Yup.string()
+    .min(6, 'Độ dài username phải từ 6 ký tự trở lên !')
+    .max(60, 'Độ dài username không được lớn hơn 60 ký tự !')
+    .required('Vui lòng điền đầy đủ thông tin !'),
   email: Yup.string()
     .email('Email không đúng định dạng !')
     .required('Email không được trống !')
     .max(256, 'Độ dài email không được lớn hơn 256 ký tự !'),
   password: Yup.string()
-    .min(8, 'Độ dài password phải từ 8 ký tự trở lên !')
+    .min(6, 'Độ dài password phải từ 8 ký tự trở lên !')
     .max(60, 'Độ dài email không được lớn hơn 60 ký tự !')
-    .required('Vui lòng điền đầy đủ thông tin !')
-    .matches(/[A-Z]/g, 'Phải có chữ in hoa')
-    .matches(/[a-z]/g, 'Phải có chữ thường')
-    .matches(/[0-9]/g, 'Phải có số')
-    .matches(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/, 'Phải có ký tự đặc biệt'),
-  re_password: Yup.string()
-    .min(8, 'Độ dài password phải từ 8 ký tự trở lên !')
-    .max(60, 'Độ dài email không được lớn hơn 60 ký tự !')
-    .required('Vui lòng điền đầy đủ thông tin !')
-    .matches(/[A-Z]/g, 'Phải có chữ in hoa')
-    .matches(/[a-z]/g, 'Phải có chữ thường')
-    .matches(/[0-9]/g, 'Phải có số')
-    .matches(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/, 'Phải có ký tự đặc biệt'),
+    .required('Vui lòng điền đầy đủ thông tin !'),
 })
 
 export const changePasswordSchema = Yup.object().shape({

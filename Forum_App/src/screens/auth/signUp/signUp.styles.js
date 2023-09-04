@@ -7,10 +7,10 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   scrollContainer: {
-    flexGrow: 10,
+    flex: 1,
   },
   headerView: {
-    flex: 0.25,
+    // flex: 0.25,
     // backgroundColor: 'red',
   },
   logoImage: {
@@ -44,6 +44,10 @@ export const styles = StyleSheet.create({
     fontSize: FontSizes.LARGE,
     textAlign: 'center',
   },
+  signInView: {
+    width: responsiveWidth(180),
+    alignSelf: 'flex-end',
+  },
   txtSignIn: {
     fontFamily: FontFamily.MEDIUM,
     fontSize: FontSizes.NORMAL,
@@ -57,7 +61,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: metrics.paddingHorizontal,
   },
   buttonSignup: {
-    top: responsiveHeight(170),
+    // top: responsiveHeight(20),
   },
   styleText: {
     marginHorizontal: responsiveWidth(120),

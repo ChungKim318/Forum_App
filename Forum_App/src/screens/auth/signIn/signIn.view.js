@@ -1,4 +1,4 @@
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native'
+import {KeyboardAvoidingView, ScrollView, Text, TouchableOpacity, View} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {styles} from './signIn.styles'
@@ -22,10 +22,7 @@ const SignInView = ({
 }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAwareScrollView
-        contentContainerStyle={{flexGrow: 1}}
-        showsVerticalScrollIndicator={false}
-        extraHeight={200}>
+      <KeyboardAwareScrollView style={{flex: 1}} showsVerticalScrollIndicator={false} extraHeight={80}>
         <View style={styles.headerView}>
           <FastImage source={images.LOGO} resizeMode={'contain'} style={styles.mainLogo} />
           <Text style={styles.txtWelcome}>Welcome Back !!</Text>
@@ -54,7 +51,7 @@ const SignInView = ({
             }) => {
               return (
                 <React.Fragment>
-                  <CustomButton
+                  {/* <CustomButton
                     icon={
                       <Icon
                         category="AntDesign"
@@ -81,15 +78,16 @@ const SignInView = ({
                     title={'Continue with Facebook'}
                     styleButton={styles.styleButton}
                     styleText={styles.styleText}
-                  />
-                  <View style={styles.middleForm}>
+                  /> */}
+                  {/* <View style={styles.middleForm}>
                     <View style={styles.dash} />
                     <Text>OR</Text>
                     <View style={styles.dash} />
-                  </View>
+                  </View> */}
                   <View style={styles.inputContainer}>
                     <CustomTextInput
-                      placeHolder={'Username'}
+                      title="Email"
+                      placeholder={'Email'}
                       textInputStyle={styles.textInputStyle}
                       value={values.email}
                       errorMessage={errors.email}
@@ -103,7 +101,8 @@ const SignInView = ({
                   </View>
                   <View style={styles.inputContainer}>
                     <CustomTextInput
-                      placeHolder={'Password'}
+                      title="Password"
+                      placeholder={'Password'}
                       textInputStyle={styles.textInputStyle}
                       value={values.password}
                       errorMessage={errors.password}
@@ -126,7 +125,7 @@ const SignInView = ({
                   </View>
 
                   <CustomButton
-                    disable={isValid}
+                    disable={!isValid}
                     onPress={onPressLogin}
                     title={'Login'}
                     styleButton={styles.buttonLogin}

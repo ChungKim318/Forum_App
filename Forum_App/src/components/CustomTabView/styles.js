@@ -3,7 +3,7 @@ import {colors, FontFamily, FontSizes, metrics, responsiveHeight} from 'themes'
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
   wrapper: {
     height: responsiveHeight(600),

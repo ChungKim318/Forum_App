@@ -11,6 +11,8 @@ import MicroIconButton from 'components/MicroIconButton'
 import ToastManager from 'components/ToastManager'
 import BottomSheet from '@gorhom/bottom-sheet'
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
+import Animated, {useAnimatedStyle, useSharedValue, withTiming} from 'react-native-reanimated'
+import Dropdown from './components/Dropdown'
 
 const CreatePostView = ({
   onBack,
@@ -21,8 +23,33 @@ const CreatePostView = ({
   handleSheetChanges,
   handlePresent,
   handleClose,
+  selectedItem,
+  onSelected,
+  data,
+  title,
+  content,
+  onChangeTitle,
+  onChangeContent,
   ...props
 }) => {
+  const onWillShow = e => {
+    // console.log('EEEE', e)
+    translateY.value = withTiming(-e.endCoordinates.height, {duration: 300})
+  }
+
+  const onWillHide = e => {
+    // console.log('HHHHHH', e)
+    translateY.value = withTiming(0, {duration: 250})
+  }
+
+  const translateY = useSharedValue(0)
+
+  const translateYStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{translateY: translateY.value}],
+    }
+  })
+
   return (
     <SafeAreaView style={styles.container}>
       <Header
@@ -37,41 +64,42 @@ const CreatePostView = ({
         onPressRight={onPost}
       />
       {/* // create view scrollable when keyboard is open */}
-      <GestureHandlerRootView style={styles.bodyView}>
-        <KeyboardAwareScrollView
-          enableOnAndroid
-          style={styles.bodyView}
-          extraHeight={140}
-          // contentContainerStyle={styles.bodyView}
-          bounces={false}>
-          <CustomTextInput
-            multiline
-            placeholder="Title"
-            textInputStyle={styles.titleTextInputStyle}
-            textStyle={styles.titleTextStyle}
-          />
-          <CustomTextInput
-            multiline
-            placeholder="body text (optional)"
-            textInputStyle={styles.bodyTextInputStyle}
-            textStyle={styles.bodyTextInput}
-          />
+      <KeyboardAwareScrollView
+        onKeyboardWillShow={onWillShow}
+        onKeyboardWillHide={onWillHide}
+        style={styles.bodyView}
+        // extraHeight={140}
+        keyboardShouldPersistTaps="handled">
+        <Dropdown title={'Choose Options'} data={data} value={selectedItem} onSelect={onSelected} />
 
-          <View style={[styles.footerView, shadow]}>
-            <Text style={styles.txtFooter}>What do you want to add?</Text>
-            <View style={styles.btnIcon}>
-              <MicroIconButton
-                title={'Link'}
-                icon={
-                  <Icon category="Foundation" name="play-video" size={metrics.icon} color={colors.black} />
-                }
-                onPress={showModal}
-              />
-            </View>
-          </View>
-        </KeyboardAwareScrollView>
-      </GestureHandlerRootView>
-      {/* <ToastManager position="top" positionHorizontal="right" duration={10000} /> */}
+        <CustomTextInput
+          multiline
+          placeholder="Title"
+          textInputStyle={styles.titleTextInputStyle}
+          textStyle={styles.titleTextStyle}
+          value={title}
+          onChange={onChangeTitle}
+        />
+        <CustomTextInput
+          multiline
+          placeholder="body text (optional)"
+          textInputStyle={styles.bodyTextInputStyle}
+          textStyle={styles.bodyTextInput}
+          value={content}
+          onChange={onChangeContent}
+        />
+      </KeyboardAwareScrollView>
+
+      <Animated.View style={[styles.footerView, shadow, translateYStyle]}>
+        <Text style={styles.txtFooter}>What do you want to add?</Text>
+        <View style={styles.btnIcon}>
+          <MicroIconButton
+            title={'Link'}
+            icon={<Icon category="Foundation" name="play-video" size={metrics.icon} color={colors.black} />}
+            onPress={showModal}
+          />
+        </View>
+      </Animated.View>
     </SafeAreaView>
   )
 }

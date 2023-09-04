@@ -10,6 +10,7 @@ const ProfileOver = ({
   userName,
   groupName,
   time,
+  icon,
   onPressShare = () => {},
   onPressAvatar = () => {},
   onPressDetail = () => {},
@@ -27,13 +28,14 @@ const ProfileOver = ({
           <TouchableOpacity onPress={onPressName}>
             <Text>{userName}</Text>
           </TouchableOpacity>
-          <View style={styles.dot} />
+          {/* <View style={styles.dot} /> */}
           <Text> {time}</Text>
         </View>
       </View>
-      <TouchableOpacity onPress={onPressShare} style={styles.dotThree}>
+      {!!icon && icon}
+      {/* <TouchableOpacity onPress={onPressShare} style={styles.dotThree}>
         <Icon category="Entypo" name="dots-three-horizontal" size={metrics.large} color={colors.black} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </TouchableOpacity>
   )
 }

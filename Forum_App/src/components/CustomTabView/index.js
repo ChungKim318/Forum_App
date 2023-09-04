@@ -33,7 +33,7 @@ const CustomTabView = ({listTab = [], renderScene, wrapperStyle, tabBarWrapperSt
 
   return (
     <TabView
-      lazy
+      lazy={true}
       navigationState={{index, routes}}
       renderScene={renderScene}
       onIndexChange={setIndex}

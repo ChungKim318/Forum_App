@@ -3,7 +3,7 @@ import {colors, FontFamily, FontSizes, metrics, responsiveWidth, responsiveHeigh
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.white,
+    // backgroundColor: colors.white,
   },
   topView: {
     flexDirection: 'row',
@@ -12,9 +12,9 @@ export const styles = StyleSheet.create({
     paddingHorizontal: responsiveWidth(10),
   },
   txtPostTitle: {
-    width: responsiveWidth(300),
+    // width: responsiveWidth(300),
     fontFamily: FontFamily.REGULAR,
-    fontSize: FontSizes.MEDIUM,
+    fontSize: FontSizes.SMALL,
   },
   middleView: {
     flexDirection: 'row',

@@ -6,6 +6,12 @@ export const styles = StyleSheet.create({
     // flex: 1,
     backgroundColor: colors.white,
   },
+  txtTitle: {
+    fontFamily: FontFamily.REGULAR,
+    fontSize: FontSizes.MEDIUM,
+    color: colors.black,
+    marginHorizontal: responsiveWidth(10),
+  },
   txtContent: {
     fontFamily: FontFamily.REGULAR,
     fontSize: FontSizes.SMALL,

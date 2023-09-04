@@ -22,13 +22,13 @@ export const styles = StyleSheet.create({
     height: responsiveHeight(500),
   },
   footerFeeds: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: metrics.medium,
+    // flexDirection: 'row',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    padding: metrics.span,
   },
   contentContainer: {
-    alignItems: 'center',
+    flex: 1,
   },
   input: {
     marginTop: 8,
@@ -43,5 +43,21 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white_sand,
     // marginHorizontal: metrics.medium,
   },
-  textStyle: {},
+  viewComments: {
+    // flex: 2,
+    backgroundColor: 'red',
+  },
+  aiAnswerTitle: {
+    fontFamily: FontFamily.BOLD,
+    fontSize: FontSizes.MEDIUM,
+    color: colors.black,
+  },
+  separator: {
+    height: metrics.span,
+  },
+  aiAnswer: {
+    fontFamily: FontFamily.REGULAR,
+    fontSize: FontSizes.NORMAL,
+    color: colors.black,
+  },
 })

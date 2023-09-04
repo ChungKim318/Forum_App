@@ -63,7 +63,7 @@ export const BottomTab = () => (
         },
       })}
     />
-    <Tab.Screen
+    {/* <Tab.Screen
       name={RouteKey.ChatScreen}
       component={screenMatch(RouteKey.ChatScreen)}
       options={{
@@ -77,8 +77,8 @@ export const BottomTab = () => (
           />
         ),
       }}
-    />
-    <Tab.Screen
+    /> */}
+    {/* <Tab.Screen
       name={RouteKey.NotificationScreen}
       component={screenMatch(RouteKey.NotificationScreen)}
       options={{
@@ -87,6 +87,6 @@ export const BottomTab = () => (
           <Icon category="Feather" name="bell" size={ICON_SIZE} color={getColor(rest)} />
         ),
       }}
-    />
+    /> */}
   </Tab.Navigator>
 )

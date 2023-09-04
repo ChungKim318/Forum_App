@@ -1,8 +1,12 @@
-import React, {useCallback, useRef, useState} from 'react'
+import React, {useCallback, useEffect, useRef, useState} from 'react'
 import SignInView from './signIn.view'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {navigate} from 'navigation/NavigationServices'
 import RouteKey from 'navigation/RouteKey'
+import {loginHandle} from 'actions/auth'
+import {getLoginSelector} from 'selectors/auth'
+import withLoading from 'HOC/index'
+import {AUTH} from 'actionTypes'
 
 const loginForm = {
   email: '',
@@ -16,7 +20,7 @@ const SignInContainer = ({...props}) => {
   const [initialValue, setInitValue] = useState(loginForm)
 
   const onPressLogin = useCallback(() => {
-    dispatch(loginEmailHandle(formikRef.current?.values?.email, formikRef.current?.values?.password))
+    dispatch(loginHandle(formikRef.current?.values?.email, formikRef.current?.values?.password))
   }, [])
 
   const onPressForgot = useCallback(() => {}, [])

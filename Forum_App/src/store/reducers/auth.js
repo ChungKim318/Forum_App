@@ -1,8 +1,8 @@
 import {AUTH, actionTypes} from 'actionTypes'
 
 const initialState = {
-  accessToken: null,
-  refreshToken: null,
+  accessToken: '',
+  refreshToken: '',
 }
 
 const authReducer = (state = initialState, action) => {
@@ -10,16 +10,19 @@ const authReducer = (state = initialState, action) => {
     case AUTH.LOG_IN.SUCCESS: {
       return {
         ...state,
-        accessToken: action?.payload?.accessToken,
-        refreshToken: action?.payload?.refreshToken,
+        accessToken: action?.payload?.access_token,
+        refreshToken: action?.payload?.refresh_token,
       }
     }
     case AUTH.SIGN_UP.SUCCESS: {
       return {
         ...state,
-        accessToken: action?.payload?.accessToken,
-        refreshToken: action?.payload?.refreshToken,
+        accessToken: action?.payload?.access_token,
+        refreshToken: action?.payload?.refresh_token,
       }
+    }
+    case AUTH.LOGOUT.SUCCESS: {
+      return initialState
     }
     default: {
       return state
