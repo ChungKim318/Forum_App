@@ -18,7 +18,7 @@ const ProfileOver = ({
   ...props
 }) => {
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.8} onPress={onPressDetail}>
+    <View style={styles.container} activeOpacity={0.8} onPress={onPressDetail}>
       <TouchableOpacity onPress={onPressAvatar}>
         <FastImage source={{uri: avatar}} style={styles.avatar} resizeMode={'stretch'} />
       </TouchableOpacity>
@@ -36,7 +36,7 @@ const ProfileOver = ({
       {/* <TouchableOpacity onPress={onPressShare} style={styles.dotThree}>
         <Icon category="Entypo" name="dots-three-horizontal" size={metrics.large} color={colors.black} />
       </TouchableOpacity> */}
-    </TouchableOpacity>
+    </View>
   )
 }
 

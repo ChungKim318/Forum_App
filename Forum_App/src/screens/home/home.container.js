@@ -9,9 +9,10 @@ import {loginHandle, logoutHandle} from 'actions/auth'
 import jwt_decode from 'jwt-decode'
 import {getTopicHandle} from 'actions/topic'
 import withLoading from 'HOC/index'
-import {AUTH, TOPIC} from 'actionTypes'
+import {AUTH, PROFILE, TOPIC} from 'actionTypes'
 import {topicSelector} from 'selectors/topic'
 import {t} from 'i18n-js'
+import {getProfileHandle} from 'actions/profile'
 
 const HomeContainer = () => {
   const [index, setIndex] = useState(0)
@@ -41,14 +42,11 @@ const HomeContainer = () => {
 
   useEffect(() => {
     dispatch(getTopicHandle())
+    dispatch(getProfileHandle())
   }, [])
 
   const onSearch = useCallback(() => {
     navigate(RouteKey.DiscoverScreen)
-  }, [])
-
-  const onLogout = useCallback(() => {
-    dispatch(logoutHandle())
   }, [])
 
   return (
@@ -57,11 +55,10 @@ const HomeContainer = () => {
       index={index}
       setIndex={setIndex}
       onSearch={onSearch}
-      onLogout={onLogout}
       topicList={topicList}
       listTab={listTab}
     />
   )
 }
 
-export default withLoading(HomeContainer, [TOPIC.GET_ALL.HANDLER, AUTH.LOGOUT.HANDLER])
+export default withLoading(HomeContainer, [TOPIC.GET_ALL.HANDLER, PROFILE.GET.HANDLER])

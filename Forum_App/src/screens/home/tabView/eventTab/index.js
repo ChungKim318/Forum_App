@@ -67,7 +67,7 @@ const EventTab = ({topicId, ...props}) => {
               topicName: item?.topicName,
             })
           }}>
-          <NewsFeedItem content={item?.content} numberOfLines={5} />
+          <NewsFeedItem content={item?.content} numberOfLines={5} title={item?.title} />
         </TouchableOpacity>
         <View style={styles.slag} />
       </View>

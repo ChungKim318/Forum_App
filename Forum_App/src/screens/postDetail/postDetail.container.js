@@ -5,7 +5,7 @@ import {goBack, navigate} from 'navigation/NavigationServices'
 import RouteKey from 'navigation/RouteKey'
 import {sendMessageOnlyRead} from 'helpers/sendNotification'
 import {useDispatch} from 'react-redux'
-import {getPostDetailHandler} from 'actions/post'
+import {getPostDetailHandler, updatePostHandler} from 'actions/post'
 import {createCommentHandle, getAllCommentHandle} from 'actions/comment'
 import withLoading from 'HOC/index'
 import {BOT, COMMENT, POST} from 'actionTypes'
@@ -31,9 +31,10 @@ const PostDetailContainer = ({...props}) => {
     dispatch(getAllCommentHandle(id, setCommentList))
   }, [id])
 
-  // const getAiAnswer = useCallback(() => {
-  //   dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
-  // }, [postDetail?.content])
+  const onPressEdit = useCallback(() => {
+    dispatch(updatePostHandler(id, comment))
+    dispatch(getPostDetailHandler(id, setPostDetail))
+  }, [postDetail?.content])
 
   useEffect(() => {
     dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
@@ -48,10 +49,6 @@ const PostDetailContainer = ({...props}) => {
 
   const onBack = useCallback(() => {
     goBack()
-  }, [])
-
-  const onPressEdit = useCallback(() => {
-    //Edit Post
   }, [])
 
   const goMyProfile = useCallback(() => {
@@ -81,7 +78,6 @@ const PostDetailContainer = ({...props}) => {
       comment={comment}
       onChangeComment={onChangeComment}
       aiAnswer={aiAnswer}
-      // getAiAnswer={getAiAnswer}
     />
   )
 }

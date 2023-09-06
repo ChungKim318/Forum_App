@@ -75,4 +75,11 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: metrics.borderRadiusCircle,
   },
+  dropDownView: {
+    // backgroundColor: colors.red,
+    // height: responsiveHeight(100),
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    marginHorizontal: metrics.span,
+  },
 })

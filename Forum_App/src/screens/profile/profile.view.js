@@ -7,7 +7,7 @@ import FastImage from 'react-native-fast-image'
 import AppConfigs from 'configs/env'
 import Header from 'components/Header'
 import Icon from 'components/Icon'
-import {colors, icons, metrics} from 'themes'
+import {colors, icons, images, metrics} from 'themes'
 import UploadSelector from 'components/UploadSelector'
 import UploadField from 'components/UploadField'
 import {SceneMap} from 'react-native-tab-view'
@@ -23,11 +23,13 @@ const ProfileView = ({
   singleFile,
   selectFile,
   listTab,
+  profile,
+  onLogout,
   ...props
 }) => {
   const renderScene = useCallback(
     SceneMap({
-      post: props => <PostTabView {...props} />,
+      post: props => <PostTabView {...props} profile={profile} />,
       comment: props => <CommentTabView {...props} />,
       about: props => <AboutTabView {...props} />,
     }),
@@ -47,35 +49,16 @@ const ProfileView = ({
             iconLeft={
               <Icon category="Ionicons" name="chevron-back" size={metrics.icon} color={colors.white} />
             }
+            iconRight={<Icon category="Feather" name="log-out" size={metrics.icon} color={colors.white} />}
             title={'My Profile'}
             titleStyle={styles.headerTitleStyle}
             onPressLeft={onPressBack}
-            iconRight={
-              <Icon
-                category="Entypo"
-                name="dots-three-horizontal"
-                color={colors.white}
-                size={metrics.large}
-              />
-            }
-            extraIcon={
-              <Icon
-                category="Fontisto"
-                name="share-a"
-                size={metrics.medium}
-                color={colors.white}
-                style={styles.extraIcon}
-              />
-            }
+            onPressRight={onLogout}
           />
         </View>
 
         <View style={styles.profileView}>
-          <FastImage
-            source={{uri: AppConfigs.AVATAR_DEFAULT}}
-            resizeMode="contain"
-            style={styles.avatarImage}
-          />
+          <FastImage source={images.AVATAR} resizeMode="contain" style={styles.avatarImage} />
           <TouchableOpacity style={styles.editAvatarView} activeOpacity={0.8} onPress={onChangeAvatar}>
             <Icon category="AntDesign" name="camera" size={metrics.icon} color={colors.black} />
           </TouchableOpacity>
@@ -84,8 +67,8 @@ const ProfileView = ({
           </TouchableOpacity>
         </View>
         <View style={styles.infoView}>
-          <Text style={styles.txtInfo}>Username</Text>
-          <Text style={styles.txtInfo}>Bio</Text>
+          <Text style={styles.txtInfo}>{profile?.username}</Text>
+          {/* <Text style={styles.txtInfo}>Bio</Text> */}
         </View>
       </LinearGradient>
 

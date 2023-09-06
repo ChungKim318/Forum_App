@@ -13,6 +13,8 @@ import {
   createPostFailure,
   updatePostSuccess,
   updatePostFailure,
+  getPostByKeywordSuccess,
+  getPostByKeywordFailure,
 } from 'actions/post'
 import {sendMessageOnlyRead} from 'helpers/sendNotification'
 
@@ -52,7 +54,7 @@ export function* getPostByUsernameSaga(action) {
     const res = yield call(PostApi.getPostByUsernameApi, username)
     console.log('----------Res getPostByUsernameSaga----------', res?.data)
 
-    yield put(getPostHandler())
+    onSuccess?.(res?.data)
 
     yield put(getPostByUsernameSuccess())
   } catch (error) {
@@ -67,7 +69,7 @@ export function* createPostSaga(action) {
     const res = yield call(PostApi.createPostApi, title, content, topicName)
     console.log('----------Res createPostSaga----------', res?.data)
 
-    yield put(getPostHandler())
+    onSuccess?.()
 
     yield put(createPostSuccess())
 
@@ -84,7 +86,7 @@ export function* updatePostSaga(action) {
     const res = yield call(PostApi.updatePostApi, id, title, content)
     console.log('----------Res updatePostSaga----------', res?.data)
 
-    yield put(getPostHandler())
+    yield put(getPostHandler(id))
 
     yield put(updatePostSuccess())
   } catch (error) {
@@ -99,11 +101,12 @@ export function* getPostByKeyword(action) {
     const res = yield call(PostApi.getPostByKeyword, keyword)
     console.log('----------Res getPostByKeyword----------', res?.data)
 
-    yield put(getPostHandler())
+    // yield put(getPostHandler())
+    onSuccess?.(res?.data)
 
-    yield put(getPostSuccess(res?.data))
+    yield put(getPostByKeywordSuccess(res?.data))
   } catch (error) {
-    yield put(updatePostFailure(error))
+    yield put(getPostByKeywordFailure(error))
     yield sendMessageOnlyRead(error?.message)
   }
 }

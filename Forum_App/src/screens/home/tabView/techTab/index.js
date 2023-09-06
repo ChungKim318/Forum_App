@@ -35,10 +35,6 @@ const TechTab = ({topicId, ...props}) => {
 
   // console.log('TechTab22', postList)
 
-  console.log('isFetching', isFetching)
-
-  console.log('isFocused', isFocused)
-
   const renderSeparator = () => {
     return <View style={styles.separator} />
   }
@@ -72,7 +68,7 @@ const TechTab = ({topicId, ...props}) => {
               topicName: item?.topicName,
             })
           }}>
-          <NewsFeedItem content={item?.content} numberOfLines={5} />
+          <NewsFeedItem content={item?.content} numberOfLines={5} title={item?.title} />
         </TouchableOpacity>
         <View style={styles.slag} />
       </View>

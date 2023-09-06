@@ -22,6 +22,7 @@ export const END_POINT = {
     GET_POST_BY_USERNAME: `${BASE_URL}/posts`,
     CREATE: `${BASE_URL}/add-post`,
     UPDATE_POST: `${BASE_URL}/update-post`,
+    GET_POST_BY_KEYWORD: `${BASE_URL}/search/posts`,
   },
 
   //COMMENT
@@ -33,5 +34,10 @@ export const END_POINT = {
   //BOT
   BOT: {
     GET: `${BASE_URL}/bot/chat`,
+  },
+
+  //PROFILE
+  PROFILE: {
+    GET: `${BASE_URL}/user-info`,
   },
 }

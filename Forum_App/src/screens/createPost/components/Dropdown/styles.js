@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
   },
   dropDownContainer: {
     backgroundColor: colors.white,
-    borderRadius: responsiveWidth(3),
+    borderRadius: metrics.borderRadiusLarge,
     height: responsiveHeight(50),
     alignItems: 'center',
     flexDirection: 'row',
@@ -19,10 +19,11 @@ export const styles = StyleSheet.create({
     fontFamily: FontFamily.REGULAR,
     fontSize: FontSizes.NORMAL,
     color: colors.black,
+    paddingBottom: responsiveHeight(10),
   },
   itemContainer: {
-    backgroundColor: colors.white,
-    borderRadius: responsiveWidth(2),
+    backgroundColor: colors.white_sand,
+    borderRadius: metrics.borderRadiusLarge,
     paddingHorizontal: responsiveHeight(20),
     // height: scale(50),
     // position: 'absolute',
@@ -32,6 +33,7 @@ export const styles = StyleSheet.create({
   item: {
     height: responsiveHeight(40),
     borderRadius: responsiveWidth(8),
+    justifyContent: 'center',
   },
   text: {
     fontSize: FontSizes.MEDIUM,

@@ -32,7 +32,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: metrics.paddingHorizontal,
   },
   headerTitle: {
-    paddingLeft: metrics.xxl,
+    marginLeft: responsiveWidth(140),
+    textAlign: 'center',
   },
   footerFeeds: {
     flexDirection: 'row',

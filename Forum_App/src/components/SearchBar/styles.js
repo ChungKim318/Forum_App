@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: colors.concrete,
     alignItems: 'center',
-    // justifyContent: 'center',
+    justifyContent: 'space-between',
     borderRadius: metrics.borderRadius,
   },
   textInput: {

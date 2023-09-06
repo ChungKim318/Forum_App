@@ -29,8 +29,8 @@ import EventTab from './tabView/eventTab'
 import ExperienceTab from './tabView/experienceTab'
 import FinanceTab from './tabView/financeTab'
 
-const HomeView = ({index, setIndex, onPressMyProfile, onSearch, onLogout, topicList, listTab, ...props}) => {
-  const layout = useWindowDimensions('window')
+const HomeView = ({index, setIndex, onPressMyProfile, onSearch, topicList, listTab, ...props}) => {
+  const layout = useWindowDimensions()
 
   const renderScene = useCallback(
     SceneMap({
@@ -108,7 +108,6 @@ const HomeView = ({index, setIndex, onPressMyProfile, onSearch, onLogout, topicL
   return (
     <SafeAreaView style={styles.container}>
       <Header
-        iconLeft={<Icon category="Feather" name="log-out" size={metrics.icon} color={colors.black} />}
         iconRight={
           <Icon
             category="FontAwesome"
@@ -118,12 +117,10 @@ const HomeView = ({index, setIndex, onPressMyProfile, onSearch, onLogout, topicL
             style={styles.iconProfile}
           />
         }
-        // extraIcon={<Icon category="Feather" name="search" size={metrics.large} color={colors.black} />}
         iconRightStyle={styles.iconProfileView}
         customStyle={styles.headerCustomStyle}
         onPressRight={onPressMyProfile}
         onPressExtra={onSearch}
-        onPressLeft={onLogout}
         title={'Home'}
         titleStyle={styles.headerTitle}
       />

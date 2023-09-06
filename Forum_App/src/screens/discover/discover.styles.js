@@ -25,11 +25,32 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainerStyle: {
-    paddingTop: responsiveHeight(10),
-    paddingBottom: responsiveHeight(70),
+    paddingBottom: responsiveHeight(50),
   },
   newsFeedView: {
     backgroundColor: colors.white,
     marginVertical: metrics.span,
+    marginHorizontal: metrics.span,
+    borderRadius: metrics.borderRadius,
+  },
+  textInputStyle: {
+    marginHorizontal: metrics.span,
+    // marginTop: metrics.span,
+    backgroundColor: colors.light_silver,
+    paddingHorizontal: metrics.span,
+    paddingVertical: metrics.tiny,
+  },
+  separator: {
+    height: metrics.tiny,
+  },
+  emptyPost: {
+    fontFamily: FontFamily.MEDIUM,
+    fontSize: FontSizes.MEDIUM,
+    textAlign: 'center',
+    marginTop: metrics.span,
+    color: colors.silver_chalice,
+  },
+  slag: {
+    height: metrics.span,
   },
 })

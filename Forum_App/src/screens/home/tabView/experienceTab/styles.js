@@ -9,11 +9,13 @@ export const styles = StyleSheet.create({
   newsFeedView: {
     backgroundColor: colors.white,
     marginVertical: metrics.span,
+    marginHorizontal: metrics.span,
+    borderRadius: metrics.borderRadius,
   },
   slag: {
     // borderWidth: responsiveWidth(0.4),
-    marginVertical: metrics.small,
-    borderColor: colors.dove_gray,
+    height: metrics.span,
+    // borderColor: colors.dove_gray,
   },
   footerFeeds: {
     flexDirection: 'row',
@@ -22,7 +24,7 @@ export const styles = StyleSheet.create({
     paddingBottom: metrics.span,
   },
   separator: {
-    height: metrics.span,
+    height: metrics.tiny,
   },
   contentContainerStyle: {
     paddingBottom: responsiveHeight(50),

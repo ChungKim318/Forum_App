@@ -21,4 +21,19 @@ export const styles = StyleSheet.create({
     fontSize: FontSizes.MEDIUM,
     paddingTop: metrics.span,
   },
+  newsFeedView: {
+    backgroundColor: colors.white,
+    marginVertical: metrics.span,
+    marginHorizontal: metrics.span,
+    borderRadius: metrics.borderRadius,
+  },
+  slag: {
+    height: metrics.span,
+  },
+  separator: {
+    height: metrics.tiny,
+  },
+  contentContainerStyle: {
+    // paddingBottom: responsiveHeight(50),
+  },
 })

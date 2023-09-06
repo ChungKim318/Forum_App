@@ -24,7 +24,9 @@ function isTokenExpired(token) {
   // console.log('-----JWT TOKEN-----', token)
   // console.log('-----DECODE-----', decoded)
 
-  if (decoded.exp < Date.now() / 1000) {
+  // console.log('first', Math.floor(Date.now() / 1000))
+
+  if (decoded.exp < Math.floor(Date.now() / 1000)) {
     return true
   } else {
     return false
@@ -44,17 +46,12 @@ axiosInstance.interceptors.request.use(
     } else {
       const refreshToken = await getData(KEY_STORAGE.REFRESH_TOKEN)
       const res = await AuthApi.refreshToken()
-      setData({
-        key: KEY_STORAGE.REFRESH_TOKEN,
-        value: res?.data?.refresh_token,
-      })
-      setData({
-        key: KEY_STORAGE.ACCESS_TOKEN,
-        value: res?.data?.access_token,
-      })
-      APIUtils.setAccessToken(res?.data?.accessToken)
+      setData(KEY_STORAGE.REFRESH_TOKEN, res?.data?.refresh_token)
+      setData(KEY_STORAGE.ACCESS_TOKEN, res?.data?.access_token)
+      APIUtils.setAccessToken(res?.data?.access_token)
       // config.headers.Authorization = `Bearer ${res?.data?.accessToken}`
-      config.headers['Authorization'] = `Bearer ${res?.data?.accessToken}`
+      config.headers['Authorization'] = `Bearer ${res?.data?.access_token}`
+      // console.log('config 22222: ', config)
       return config
     }
   },

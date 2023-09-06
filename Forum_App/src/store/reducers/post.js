@@ -31,6 +31,10 @@ const postReducer = (state = initialState, action) => {
         listPost: action.payload,
       }
     }
+    case POST.CREATE.SUCCESS: {
+      return state
+    }
+
     default: {
       return state
     }
