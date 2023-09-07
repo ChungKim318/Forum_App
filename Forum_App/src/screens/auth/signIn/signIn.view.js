@@ -22,35 +22,39 @@ const SignInView = ({
 }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAwareScrollView style={{flex: 1}} showsVerticalScrollIndicator={false} extraHeight={80}>
-        <View style={styles.headerView}>
-          <FastImage source={images.LOGO} resizeMode={'contain'} style={styles.mainLogo} />
-          <Text style={styles.txtWelcome}>Welcome Back !!</Text>
-          <Text style={styles.textLogin}>Login to your account</Text>
-        </View>
+      <View style={styles.headerView}>
+        <FastImage source={images.LOGO} resizeMode={'contain'} style={styles.mainLogo} />
+        <Text style={styles.txtWelcome}>Welcome Back !!</Text>
+        <Text style={styles.textLogin}>Login to your account</Text>
+      </View>
 
-        <View style={styles.formikView}>
-          <Formik
-            innerRef={formikRef}
-            initialValues={initialValue}
-            onSubmit={onPressLogin}
-            validateOnChange={true}
-            enableReinitialize={true}
-            validationSchema={loginYupSchema}>
-            {({
-              dirty,
-              errors,
-              values,
-              isValid,
-              touched,
-              handleBlur,
-              handleChange,
-              validateForm,
-              setFieldValue,
-              handleSubmit,
-            }) => {
-              return (
-                <React.Fragment>
+      <View style={styles.formikView}>
+        <Formik
+          innerRef={formikRef}
+          initialValues={initialValue}
+          onSubmit={onPressLogin}
+          validateOnChange={true}
+          enableReinitialize={true}
+          validationSchema={loginYupSchema}>
+          {({
+            dirty,
+            errors,
+            values,
+            isValid,
+            touched,
+            handleBlur,
+            handleChange,
+            validateForm,
+            setFieldValue,
+            handleSubmit,
+          }) => {
+            return (
+              <React.Fragment>
+                <KeyboardAwareScrollView
+                  style={{flex: 1}}
+                  showsVerticalScrollIndicator={false}
+                  keyboardShouldPersistTaps={'handled'}
+                  extraHeight={100}>
                   {/* <CustomButton
                     icon={
                       <Icon
@@ -123,20 +127,19 @@ const SignInView = ({
                       <Text style={styles.txtSignUp}>Sign up</Text>
                     </TouchableOpacity>
                   </View>
-
-                  <CustomButton
-                    disable={!isValid}
-                    onPress={onPressLogin}
-                    title={'Login'}
-                    styleButton={styles.buttonLogin}
-                    styleText={styles.txtLogin}
-                  />
-                </React.Fragment>
-              )
-            }}
-          </Formik>
-        </View>
-      </KeyboardAwareScrollView>
+                </KeyboardAwareScrollView>
+                <CustomButton
+                  disable={!isValid}
+                  onPress={onPressLogin}
+                  title={'Login'}
+                  styleButton={styles.buttonLogin}
+                  styleText={styles.txtLogin}
+                />
+              </React.Fragment>
+            )
+          }}
+        </Formik>
+      </View>
     </SafeAreaView>
   )
 }

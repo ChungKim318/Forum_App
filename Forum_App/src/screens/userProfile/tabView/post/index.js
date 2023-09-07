@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native'
-import React, {useCallback} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {styles} from './styles'
 import NewsFeedItem from 'components/NewsFeedItem'
 import ProfileOver from 'components/ProfileOver'
@@ -8,8 +8,25 @@ import MicroFeedButton from 'components/MicroFeedButton'
 import Icon from 'components/Icon'
 import {colors, metrics} from 'themes'
 import {FlashList} from '@shopify/flash-list'
+import {useDispatch} from 'react-redux'
+import {getPostByUsernameHandler} from 'actions/post'
 
-const PostTabView = ({...props}) => {
+const PostTabView = ({userName, ...props}) => {
+  const [postList, setPostList] = useState([])
+  const [isFetching, setIsFetching] = useState(false)
+
+  const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(
+  //     getPostByUsernameHandler(userName, res => {
+  //       setPostList(res)
+  //     }),
+  //   )
+  // }, [])
+
+  // console.log('PostTabView', postList)
+
   const onComment = useCallback(() => {}, [])
 
   const onShare = useCallback(() => {}, [])

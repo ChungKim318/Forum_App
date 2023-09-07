@@ -22,14 +22,14 @@ export function* getPostSaga(action) {
   const {postId, onSuccess} = action
   try {
     const res = yield call(PostApi.getPostApi, postId)
-    console.log('----------Res getPostSaga----------', res?.data)
+    // console.log('----------Res getPostSaga----------', res?.data)
 
     onSuccess?.(res?.data)
 
     yield put(getPostSuccess(res?.data))
   } catch (error) {
     yield put(getPostFailure(error))
-    yield sendMessageOnlyRead(error?.message)
+    yield sendMessageOnlyRead('Get post failure!')
   }
 }
 
@@ -37,14 +37,14 @@ export function* getPostDetailSaga(action) {
   const {postId, onSuccess} = action
   try {
     const res = yield call(PostApi.getPostDetailApi, postId)
-    console.log('----------Res getPostDetailSaga----------', res?.data)
+    // console.log('----------Res getPostDetailSaga----------', res?.data)
 
     onSuccess?.(res?.data)
 
     yield put(getPostDetailSuccess(res?.data))
   } catch (error) {
     yield put(getPostDetailFailure(error))
-    yield sendMessageOnlyRead(error?.message)
+    yield sendMessageOnlyRead('Get post detail failure!')
   }
 }
 
@@ -52,22 +52,22 @@ export function* getPostByUsernameSaga(action) {
   const {username, onSuccess} = action
   try {
     const res = yield call(PostApi.getPostByUsernameApi, username)
-    console.log('----------Res getPostByUsernameSaga----------', res?.data)
+    // console.log('----------Res getPostByUsernameSaga----------', res?.data)
 
     onSuccess?.(res?.data)
 
     yield put(getPostByUsernameSuccess())
   } catch (error) {
     yield put(getPostByUsernameFailure(error))
-    yield sendMessageOnlyRead(error?.message)
+    yield sendMessageOnlyRead('Get post by username failure!')
   }
 }
 
 export function* createPostSaga(action) {
-  const {title, content, topicName} = action
+  const {title, content, topicName, onSuccess} = action
   try {
     const res = yield call(PostApi.createPostApi, title, content, topicName)
-    console.log('----------Res createPostSaga----------', res?.data)
+    // console.log('----------Res createPostSaga----------', res?.data)
 
     onSuccess?.()
 
@@ -76,22 +76,22 @@ export function* createPostSaga(action) {
     yield sendMessageOnlyRead('Create post successfully!')
   } catch (error) {
     yield put(createPostFailure(error))
-    yield sendMessageOnlyRead(error?.message)
+    yield sendMessageOnlyRead('Create post failure!')
   }
 }
 
 export function* updatePostSaga(action) {
-  const {id, title, content} = action
+  const {id, title, content, onSuccess} = action
   try {
     const res = yield call(PostApi.updatePostApi, id, title, content)
-    console.log('----------Res updatePostSaga----------', res?.data)
+    // console.log('----------Res updatePostSaga----------', res?.data)
 
-    yield put(getPostHandler(id))
+    yield put(getPostDetailHandler(id))
 
     yield put(updatePostSuccess())
   } catch (error) {
     yield put(updatePostFailure(error))
-    yield sendMessageOnlyRead(error?.message)
+    yield sendMessageOnlyRead('Update post failure!')
   }
 }
 
@@ -99,7 +99,7 @@ export function* getPostByKeyword(action) {
   const {keyword, onSuccess} = action
   try {
     const res = yield call(PostApi.getPostByKeyword, keyword)
-    console.log('----------Res getPostByKeyword----------', res?.data)
+    // console.log('----------Res getPostByKeyword----------', res?.data)
 
     // yield put(getPostHandler())
     onSuccess?.(res?.data)
@@ -107,6 +107,6 @@ export function* getPostByKeyword(action) {
     yield put(getPostByKeywordSuccess(res?.data))
   } catch (error) {
     yield put(getPostByKeywordFailure(error))
-    yield sendMessageOnlyRead(error?.message)
+    yield sendMessageOnlyRead('Get post by keyword failure!')
   }
 }

@@ -19,7 +19,7 @@ const listTab = [
 ]
 
 const UserProfileContainer = ({...props}) => {
-  const {username} = props?.route?.params
+  const {userName} = props?.route?.params
 
   const onBack = useCallback(() => {
     goBack()
@@ -29,7 +29,7 @@ const UserProfileContainer = ({...props}) => {
     console.log('onFollow')
   }, [])
 
-  return <UserProfileView username={username} onBack={onBack} onFollow={onFollow} listTab={listTab} />
+  return <UserProfileView userName={userName} onBack={onBack} onFollow={onFollow} listTab={listTab} />
 }
 
 export default UserProfileContainer

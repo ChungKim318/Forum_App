@@ -36,4 +36,13 @@ export const styles = StyleSheet.create({
   contentContainerStyle: {
     // paddingBottom: responsiveHeight(50),
   },
+  headerPostItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // marginHorizontal: metrics.span,
+  },
+  btnView: {
+    right: metrics.medium,
+  },
 })

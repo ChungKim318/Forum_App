@@ -7,13 +7,13 @@ export function* getTopicSaga(action) {
   const {onSuccess} = action
   try {
     const res = yield call(TopicApi.getListTopicApi)
-    console.log('----------Res getTopicSaga----------', res?.data)
+    // console.log('----------Res getTopicSaga----------', res?.data)
 
     onSuccess?.(res?.data)
 
     yield put(getTopicSuccess(res?.data))
   } catch (error) {
     yield put(getTopicFailed(error))
-    yield sendMessageOnlyRead(error?.message)
+    yield sendMessageOnlyRead('Get topic failure!!')
   }
 }

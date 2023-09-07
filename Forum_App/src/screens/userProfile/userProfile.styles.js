@@ -6,16 +6,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
   },
-  contentContainerStyle: {
-    flexGrow: 1,
-    paddingBottom: responsiveHeight(10),
-  },
   linearGradient: {
     flex: 1,
-    paddingHorizontal: metrics.paddingHorizontal,
+    paddingLeft: responsiveWidth(15),
+    paddingRight: responsiveWidth(15),
   },
   bodyView: {
-    flex: 10,
+    flex: 2,
   },
   customHeaderStyle: {
     marginTop: responsiveHeight(10),
@@ -38,6 +35,7 @@ export const styles = StyleSheet.create({
     fontSize: FontSizes.XX_LARGE,
     color: colors.white,
     padding: responsiveHeight(10),
+    marginLeft: responsiveWidth(15),
   },
   txtDescription: {
     fontFamily: FontFamily.REGULAR,

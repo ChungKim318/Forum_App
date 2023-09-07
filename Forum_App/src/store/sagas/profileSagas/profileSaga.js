@@ -7,7 +7,7 @@ export function* getProfileSaga(action) {
   const {payload, onSuccess} = action
   try {
     const res = yield call(ProfileApi.getProfileApi, payload)
-    console.log('----------Res getProfileSaga----------', res?.data)
+    // console.log('----------Res getProfileSaga----------', res?.data)
 
     onSuccess?.(res?.data)
 

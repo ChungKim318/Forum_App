@@ -14,14 +14,14 @@ export function* getAllCommentSaga(action) {
 
   try {
     const res = yield call(CommentApi.getAllCommentApi, postId)
-    console.log('----------Res getAllCommentSaga----------', res?.data)
+    // console.log('----------Res getAllCommentSaga----------', res?.data)
 
     onSuccess?.(res?.data)
 
     yield put(getAllCommentSuccess(res?.data))
   } catch (error) {
     yield put(getAllCommentFailure(error))
-    yield sendMessageOnlyRead(error.message)
+    yield sendMessageOnlyRead('Get all comment failure!')
   }
 }
 
@@ -29,7 +29,7 @@ export function* createCommentSaga(action) {
   const {postId, text} = action
   try {
     const res = yield call(CommentApi.createCommentApi, postId, text)
-    console.log('----------Res createCommentSaga----------', res?.data)
+    // console.log('----------Res createCommentSaga----------', res?.data)
 
     yield put(getAllCommentHandle(postId))
 
@@ -37,6 +37,6 @@ export function* createCommentSaga(action) {
     yield put(getAllCommentHandle(postId))
   } catch (error) {
     yield put(createCommentFailure(error))
-    yield sendMessageOnlyRead(error.message)
+    yield sendMessageOnlyRead('Create comment failure!')
   }
 }

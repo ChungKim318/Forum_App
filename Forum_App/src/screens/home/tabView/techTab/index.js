@@ -55,7 +55,15 @@ const TechTab = ({topicId, ...props}) => {
   const renderItem = useCallback(({item, index}) => {
     return (
       <View style={[styles.newsFeedView, shadow]}>
-        <ProfileOver avatar={item.avatar} userName={item.userName} />
+        <ProfileOver
+          avatar={item.avatar}
+          userName={item.userName}
+          onPressName={() => {
+            navigate(RouteKey.UserProfileScreen, {
+              userName: item?.userName,
+            })
+          }}
+        />
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => {
@@ -85,7 +93,7 @@ const TechTab = ({topicId, ...props}) => {
         ItemSeparatorComponent={renderSeparator}
         estimatedItemSize={100}
         keyExtractor={(item, index) => item.id.toString() + index.toString()}
-        // contentContainerStyle={styles.contentContainerStyle}
+        contentContainerStyle={styles.contentContainerStyle}
       />
     </View>
   )
