@@ -15,6 +15,8 @@ import {
   updatePostFailure,
   getPostByKeywordSuccess,
   getPostByKeywordFailure,
+  getPostRelatedSuccess,
+  getPostRelatedFailure,
 } from 'actions/post'
 import {sendMessageOnlyRead} from 'helpers/sendNotification'
 
@@ -108,5 +110,20 @@ export function* getPostByKeyword(action) {
   } catch (error) {
     yield put(getPostByKeywordFailure(error))
     yield sendMessageOnlyRead('Get post by keyword failure!')
+  }
+}
+
+export function* getPostRelatedSaga(action) {
+  const {postId, onSuccess} = action
+  try {
+    const res = yield call(PostApi.getPostRelatedApi, postId)
+    console.log('----------Res getPostRelated----------', res?.data)
+
+    onSuccess?.(res?.data)
+
+    yield put(getPostRelatedSuccess(res?.data))
+  } catch (error) {
+    yield put(getPostRelatedFailure(error))
+    yield sendMessageOnlyRead('Get post related failure!')
   }
 }

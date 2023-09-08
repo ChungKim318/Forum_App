@@ -7,6 +7,7 @@ import {
   createPostSaga,
   updatePostSaga,
   getPostByKeyword,
+  getPostRelatedSaga,
 } from './postSaga'
 
 function* watchPost() {
@@ -16,6 +17,7 @@ function* watchPost() {
   yield takeLatest(POST.CREATE.HANDLER, createPostSaga)
   yield takeLatest(POST.UPDATE.HANDLER, updatePostSaga)
   yield takeLatest(POST.GET_BY_KEYWORD.HANDLER, getPostByKeyword)
+  yield takeLatest(POST.GET_RELATED.HANDLER, getPostRelatedSaga)
 }
 
 export default function* rootChild() {

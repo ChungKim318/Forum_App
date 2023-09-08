@@ -5,7 +5,7 @@ import {goBack, navigate} from 'navigation/NavigationServices'
 import RouteKey from 'navigation/RouteKey'
 import {sendMessageOnlyRead} from 'helpers/sendNotification'
 import {useDispatch} from 'react-redux'
-import {getPostDetailHandler, updatePostHandler} from 'actions/post'
+import {getPostDetailHandler, getPostRelatedHandler, updatePostHandler} from 'actions/post'
 import {createCommentHandle, getAllCommentHandle} from 'actions/comment'
 import withLoading from 'HOC/index'
 import {BOT, COMMENT, POST} from 'actionTypes'
@@ -19,6 +19,7 @@ const PostDetailContainer = ({...props}) => {
   const [postDetail, setPostDetail] = useState([])
   const [commentList, setCommentList] = useState([])
   const [aiAnswer, setAiAnswer] = useState([])
+  const [relatedList, setRelatedList] = useState([])
   const [comment, setComment] = useState('')
   const dispatch = useDispatch()
 
@@ -33,18 +34,28 @@ const PostDetailContainer = ({...props}) => {
     dispatch(getAllCommentHandle(id, setCommentList))
   }, [id])
 
+  useEffect(() => {
+    dispatch(
+      getPostRelatedHandler(id, res => {
+        setRelatedList(res)
+      }),
+    )
+  }, [id])
+
+  console.log('PostDetailContainer', relatedList)
+
   const onPressEdit = () => {
     showModalEmpty({
-      title: 'The same posts',
-      customContent: <SamePost />,
+      title: 'Related Post',
+      customContent: <SamePost relatedList={relatedList} />,
     })
   }
 
-  useEffect(() => {
-    dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
-  }, [postDetail?.content])
+  // useEffect(() => {
+  //   dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
+  // }, [postDetail?.content])
 
-  console.log('AI ANSWER', aiAnswer)
+  // console.log('AI ANSWER', aiAnswer)
 
   const onChangeComment = useCallback(text => {
     setComment(text)
@@ -82,6 +93,7 @@ const PostDetailContainer = ({...props}) => {
       comment={comment}
       onChangeComment={onChangeComment}
       aiAnswer={aiAnswer}
+      relatedList={relatedList}
     />
   )
 }
@@ -90,5 +102,5 @@ export default withLoading(PostDetailContainer, [
   POST.GET_DETAIL.HANDLER,
   COMMENT.GET_ALL.HANDLER,
   COMMENT.CREATE.HANDLER,
-  BOT.GET.HANDLER,
+  // BOT.GET.HANDLER,
 ])

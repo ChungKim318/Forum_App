@@ -51,6 +51,10 @@ const getPostByKeyword = async keyword => {
   })
 }
 
+const getPostRelatedApi = async postId => {
+  return await APIUtils.get(`${END_POINT.POST.GET_POST_RELATED}/${postId}`)
+}
+
 export default {
   getPostApi,
   getPostDetailApi,
@@ -58,4 +62,5 @@ export default {
   createPostApi,
   updatePostApi,
   getPostByKeyword,
+  getPostRelatedApi,
 }

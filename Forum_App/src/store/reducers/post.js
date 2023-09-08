@@ -3,6 +3,7 @@ import {POST} from 'actionTypes'
 const initialState = {
   listPost: [],
   listPostDetail: [],
+  listRelated: [],
 }
 
 const postReducer = (state = initialState, action) => {
@@ -33,6 +34,12 @@ const postReducer = (state = initialState, action) => {
     }
     case POST.CREATE.SUCCESS: {
       return state
+    }
+    case POST.GET_RELATED.SUCCESS: {
+      return {
+        ...state,
+        listRelated: action.payload,
+      }
     }
 
     default: {

@@ -25,6 +25,8 @@ import CommentItem from 'components/CommentItem'
 import CommentInput from 'components/CommentInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import {formatDate} from 'helpers/formatTime'
+import RouteKey from 'navigation/RouteKey'
+import {navigate} from 'navigation/NavigationServices'
 
 const PostDetailView = ({
   bottomSheetRef,
@@ -51,10 +53,15 @@ const PostDetailView = ({
   onSearch,
   getAiAnswer,
   aiAnswer,
+  relatedList,
   ...props
 }) => {
   const renderItem = useCallback(({item}) => {
     return <CommentItem userName={item.userName} commentContent={item.text} />
+  }, [])
+
+  const separatorComponent = useCallback(() => {
+    return <View style={styles.separator} />
   }, [])
 
   return (
@@ -82,9 +89,10 @@ const PostDetailView = ({
         // extraHeight={10}
         keyboardShouldPersistTaps="handled">
         <View style={styles.headerPostItem}>
-          <ProfileOver avatar={avatar} userName={userName} time={formatDate(postDetail?.createdAt)} />
+          <ProfileOver avatar={avatar} userName={userName} />
           <TouchableOpacity activeOpacity={0.7} style={styles.btnView} onPress={onPressEdit}>
             <Icon category="Entypo" name="dots-three-horizontal" color={colors.black} size={metrics.medium} />
+            {/* <Text style={styles.relatedTxt}>Related Post</Text> */}
           </TouchableOpacity>
         </View>
 
@@ -129,6 +137,29 @@ const PostDetailView = ({
             keyExtractor={(item, index) => index.toString()}
           />
         </View> */}
+
+        <View>
+          <Text style={styles.relatedTxt}>Related Post</Text>
+          {!!relatedList?.length > 0 &&
+            relatedList.map((item, index) => {
+              return (
+                <View style={styles.item} key={item?.id.toString() + index.toString()}>
+                  <TouchableOpacity
+                    activeOpacity={0.7}
+                    onPress={() => {
+                      navigate(RouteKey.PostDetailScreen, {
+                        id: item?.id,
+                        title: item?.title,
+                        content: item?.content,
+                      })
+                    }}>
+                    <Text style={styles.relatedTitle}>{item?.title}</Text>
+                  </TouchableOpacity>
+                  <View style={styles.dash} />
+                </View>
+              )
+            })}
+        </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>
   )
