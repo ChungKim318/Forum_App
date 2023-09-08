@@ -15,6 +15,8 @@ import EditForm from 'screens/profile/components/EditForm'
 import {useIsFocused} from '@react-navigation/native'
 import withLoading from 'HOC/index'
 import {POST} from 'actionTypes'
+import {navigate} from 'navigation/NavigationServices'
+import RouteKey from 'navigation/RouteKey'
 
 const PostTabView = ({profile, ...props}) => {
   const [userPostData, setUserPostData] = useState([])
@@ -63,7 +65,18 @@ const PostTabView = ({profile, ...props}) => {
 
   const renderItem = useCallback(({item}) => {
     return (
-      <View style={[styles.newsFeedView, shadow]} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={[styles.newsFeedView, shadow]}
+        activeOpacity={0.8}
+        onPress={() => {
+          navigate(RouteKey.PostDetailScreen, {
+            id: item?.id,
+            title: item?.title,
+            content: item?.content,
+            topicName: item?.topicName,
+            userName: item?.userName,
+          })
+        }}>
         <View style={styles.headerPostItem}>
           <ProfileOver userName={item?.userName} />
           <TouchableOpacity
@@ -88,7 +101,7 @@ const PostTabView = ({profile, ...props}) => {
 
         <NewsFeedItem content={item?.content} numberOfLines={5} title={item?.title} />
         <View style={styles.slag} />
-      </View>
+      </TouchableOpacity>
     )
   }, [])
 

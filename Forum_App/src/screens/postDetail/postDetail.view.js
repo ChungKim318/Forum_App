@@ -24,6 +24,7 @@ import CustomTextInput from 'components/CustomTextInput'
 import CommentItem from 'components/CommentItem'
 import CommentInput from 'components/CommentInput'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+import {formatDate} from 'helpers/formatTime'
 
 const PostDetailView = ({
   bottomSheetRef,
@@ -80,16 +81,12 @@ const PostDetailView = ({
         style={styles.contentContainer}
         // extraHeight={10}
         keyboardShouldPersistTaps="handled">
-        <ProfileOver
-          avatar={avatar}
-          userName={userName}
-          time={time}
-          icon={
-            <TouchableOpacity style={styles.dotThree} onPressEdit={onPressEdit}>
-              <Icon category="Feather" name="edit" size={metrics.large} color={colors.black} />
-            </TouchableOpacity>
-          }
-        />
+        <View style={styles.headerPostItem}>
+          <ProfileOver avatar={avatar} userName={userName} time={formatDate(postDetail?.createdAt)} />
+          <TouchableOpacity activeOpacity={0.7} style={styles.btnView} onPress={onPressEdit}>
+            <Icon category="Entypo" name="dots-three-horizontal" color={colors.black} size={metrics.medium} />
+          </TouchableOpacity>
+        </View>
 
         <NewsFeedItem content={postDetail?.content} title={postDetail?.title} />
 

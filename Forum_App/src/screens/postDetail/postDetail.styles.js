@@ -60,4 +60,18 @@ export const styles = StyleSheet.create({
     fontSize: FontSizes.NORMAL,
     color: colors.black,
   },
+  headerPostItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // marginHorizontal: metrics.span,
+  },
+  btnView: {
+    right: metrics.medium,
+  },
+  textStyle: {
+    fontFamily: FontFamily.REGULAR,
+    fontSize: FontSizes.MEDIUM,
+    height: responsiveHeight(50),
+  },
 })

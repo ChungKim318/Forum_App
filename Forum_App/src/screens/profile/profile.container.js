@@ -8,7 +8,7 @@ import {useDispatch} from 'react-redux'
 import {getProfileHandle} from 'actions/profile'
 import {logoutHandle} from 'actions/auth'
 import withLoading from 'HOC/index'
-import {PROFILE} from 'actionTypes'
+import {AUTH, PROFILE} from 'actionTypes'
 
 const listTab = [
   {
@@ -84,4 +84,4 @@ const ProfileContainer = ({...props}) => {
   )
 }
 
-export default withLoading(ProfileContainer, [PROFILE.GET.HANDLER])
+export default withLoading(ProfileContainer, [PROFILE.GET.HANDLER, AUTH.LOGOUT.HANDLER])

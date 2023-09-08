@@ -8,9 +8,9 @@ import CustomButton from 'components/CustomButton'
 import {hideModalEmpty} from 'components/CustomModal'
 
 const EditForm = ({id, content, title, topicName, ...props}) => {
-  console.log('🚀 ~ file: index.js:43 ~ EditForm ~ userPostData', id, content, title, topicName)
-  const [titleEdit, setTitleEdit] = useState('')
-  const [contentEdit, setContentEdit] = useState('')
+  // console.log('🚀 ~ file: index.js:43 ~ EditForm ~ userPostData', id, content, title, topicName)
+  const [titleEdit, setTitleEdit] = useState(title)
+  const [contentEdit, setContentEdit] = useState(content)
 
   const dispatch = useDispatch()
 
@@ -44,7 +44,7 @@ const EditForm = ({id, content, title, topicName, ...props}) => {
         <CustomTextInput
           value={titleEdit}
           onChange={onChangeTitle}
-          placeholder={title}
+          // placeholder={title}
           title={'Title'}
           textInputStyle={styles.titleTextInputStyle}
           textStyle={styles.titleTextStyle}
@@ -53,7 +53,7 @@ const EditForm = ({id, content, title, topicName, ...props}) => {
         <CustomTextInput
           value={contentEdit}
           onChange={onChangeContent}
-          placeholder={content}
+          // placeholder={content}
           title={'Content'}
           textInputStyle={styles.titleTextInputStyle}
           textStyle={styles.titleTextStyle}

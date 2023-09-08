@@ -10,6 +10,8 @@ import {createCommentHandle, getAllCommentHandle} from 'actions/comment'
 import withLoading from 'HOC/index'
 import {BOT, COMMENT, POST} from 'actionTypes'
 import {getAnswerHandle} from 'actions/bot'
+import {showModalEmpty} from 'components/CustomModal'
+import SamePost from './components/SamePost'
 
 const PostDetailContainer = ({...props}) => {
   const {avatar, id, userName, content, title, topicName} = props.route.params
@@ -31,14 +33,16 @@ const PostDetailContainer = ({...props}) => {
     dispatch(getAllCommentHandle(id, setCommentList))
   }, [id])
 
-  const onPressEdit = useCallback(() => {
-    dispatch(updatePostHandler(id, comment))
-    dispatch(getPostDetailHandler(id, setPostDetail))
-  }, [postDetail?.content])
+  const onPressEdit = () => {
+    showModalEmpty({
+      title: 'The same posts',
+      customContent: <SamePost />,
+    })
+  }
 
-  useEffect(() => {
-    dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
-  }, [postDetail?.content])
+  // useEffect(() => {
+  //   dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
+  // }, [postDetail?.content])
 
   console.log('AI ANSWER', aiAnswer)
 
@@ -86,5 +90,5 @@ export default withLoading(PostDetailContainer, [
   POST.GET_DETAIL.HANDLER,
   COMMENT.GET_ALL.HANDLER,
   COMMENT.CREATE.HANDLER,
-  BOT.GET.HANDLER,
+  // BOT.GET.HANDLER,
 ])

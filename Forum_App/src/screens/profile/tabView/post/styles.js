@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   newsFeedView: {
     backgroundColor: colors.white,
-    marginVertical: metrics.span,
+    marginTop: metrics.span,
     marginHorizontal: metrics.span,
     borderRadius: metrics.borderRadius,
   },
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     height: metrics.tiny,
   },
   contentContainerStyle: {
-    // paddingBottom: responsiveHeight(50),
+    paddingBottom: responsiveHeight(20),
   },
   headerPostItem: {
     flexDirection: 'row',
