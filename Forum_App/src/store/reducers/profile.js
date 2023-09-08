@@ -1,4 +1,4 @@
-import {PROFILE, actionTypes} from 'actionTypes'
+import {PROFILE} from 'actionTypes'
 
 const initialState = {
   profile: [],

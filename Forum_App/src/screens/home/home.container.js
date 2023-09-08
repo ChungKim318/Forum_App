@@ -11,7 +11,6 @@ import {getTopicHandle} from 'actions/topic'
 import withLoading from 'HOC/index'
 import {AUTH, PROFILE, TOPIC} from 'actionTypes'
 import {topicSelector} from 'selectors/topic'
-import {t} from 'i18n-js'
 import {getProfileHandle} from 'actions/profile'
 
 const HomeContainer = () => {

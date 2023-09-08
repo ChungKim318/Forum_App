@@ -20,7 +20,10 @@ export const styles = StyleSheet.create({
   },
   searchIcon: {
     padding: metrics.tiny,
+<<<<<<< HEAD
     // marginRight: metrics.span,
     right: responsiveWidth(40),
+=======
+>>>>>>> main
   },
 })

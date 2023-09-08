@@ -90,5 +90,5 @@ export default withLoading(PostDetailContainer, [
   POST.GET_DETAIL.HANDLER,
   COMMENT.GET_ALL.HANDLER,
   COMMENT.CREATE.HANDLER,
-  // BOT.GET.HANDLER,
+  BOT.GET.HANDLER,
 ])
