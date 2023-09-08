@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {Platform, StyleSheet} from 'react-native'
 import {FontFamily, FontSizes, colors, metrics, responsiveHeight, responsiveWidth} from 'themes'
 
 export const styles = StyleSheet.create({
@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     marginLeft: metrics.span,
   },
   headerCustomStyle: {
+    marginTop: Platform.OS === 'ios' ? 0 : metrics.tiny,
     paddingHorizontal: metrics.paddingHorizontal,
   },
   headerTitle: {

@@ -51,6 +51,7 @@ const SignInView = ({
             return (
               <React.Fragment>
                 <KeyboardAwareScrollView
+                  enableOnAndroid={true}
                   style={{flex: 1}}
                   showsVerticalScrollIndicator={false}
                   keyboardShouldPersistTaps={'handled'}

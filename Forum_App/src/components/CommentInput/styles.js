@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     borderRadius: metrics.borderRadius,
   },
   textInput: {
-    // width: '100%',
+    width: '100%',
     height: responsiveHeight(30),
     fontFamily: FontFamily.REGULAR,
     color: colors.black,
@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
   },
   searchIcon: {
     padding: metrics.tiny,
-    marginRight: metrics.span,
+    // marginRight: metrics.span,
+    right: responsiveWidth(40),
   },
 })

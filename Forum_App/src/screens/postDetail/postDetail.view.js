@@ -112,7 +112,14 @@ const PostDetailView = ({
 
         {!!commentList?.length > 0 &&
           commentList.map((item, index) => {
-            return <CommentItem key={index.toString()} userName={item.userName} commentContent={item.text} />
+            return (
+              <CommentItem
+                key={index.toString()}
+                userName={item.userName}
+                commentContent={item.text}
+                customStyle={styles.customCommentStyle}
+              />
+            )
           })}
         {/* <View style={{flex: 0.5}}>
           <FlashList

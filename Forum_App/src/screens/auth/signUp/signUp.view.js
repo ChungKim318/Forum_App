@@ -14,6 +14,7 @@ const SignUpView = ({formikRef, initialForm, signUpForm, onPressSignUp, onPressS
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAwareScrollView
+        enableOnAndroid={true}
         style={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
         extraHeight={80}>

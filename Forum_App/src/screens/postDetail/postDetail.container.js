@@ -40,9 +40,9 @@ const PostDetailContainer = ({...props}) => {
     })
   }
 
-  // useEffect(() => {
-  //   dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
-  // }, [postDetail?.content])
+  useEffect(() => {
+    dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
+  }, [postDetail?.content])
 
   console.log('AI ANSWER', aiAnswer)
 

@@ -1,7 +1,8 @@
 import {TOPIC} from 'actionTypes'
 
-export const getTopicHandle = (onSuccess = () => {}) => ({
+export const getTopicHandle = (payload, onSuccess = () => {}) => ({
   type: TOPIC.GET_ALL.HANDLER,
+  payload,
   onSuccess,
 })
 

@@ -16,6 +16,7 @@ import {getProfileHandle} from 'actions/profile'
 
 const HomeContainer = () => {
   const [index, setIndex] = useState(0)
+  const [topicData, setTopicData] = useState([])
 
   const dispatch = useDispatch()
   const topicList = useSelector(topicSelector)

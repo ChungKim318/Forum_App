@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {Platform, StyleSheet} from 'react-native'
 import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidth} from 'themes'
 
 export const styles = StyleSheet.create({
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainerStyle: {
-    paddingBottom: responsiveHeight(50),
+    paddingBottom: Platform.OS === 'ios' ? responsiveHeight(50) : responsiveHeight(100),
   },
   newsFeedView: {
     backgroundColor: colors.white,
@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   },
   textInputStyle: {
     marginHorizontal: metrics.span,
-    // marginTop: metrics.span,
+    marginTop: Platform.OS === 'ios' ? 0 : metrics.tiny,
     backgroundColor: colors.light_silver,
     paddingHorizontal: metrics.span,
     paddingVertical: metrics.tiny,

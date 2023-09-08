@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {Platform, StyleSheet} from 'react-native'
 import {colors, FontFamily, FontSizes, metrics, responsiveWidth, responsiveHeight} from 'themes'
 
 export const styles = StyleSheet.create({
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     height: metrics.tiny,
   },
   contentContainerStyle: {
-    paddingBottom: responsiveHeight(50),
+    paddingBottom: Platform.OS === 'ios' ? responsiveHeight(50) : responsiveHeight(100),
   },
   emptyView: {
     flex: 1,
