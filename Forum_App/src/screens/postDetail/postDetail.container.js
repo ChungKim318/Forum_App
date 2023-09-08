@@ -51,11 +51,11 @@ const PostDetailContainer = ({...props}) => {
     })
   }
 
-  // useEffect(() => {
-  //   dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
-  // }, [postDetail?.content])
+  useEffect(() => {
+    dispatch(getAnswerHandle(postDetail?.content, setAiAnswer))
+  }, [postDetail?.content])
 
-  // console.log('AI ANSWER', aiAnswer)
+  console.log('AI ANSWER', aiAnswer)
 
   const onChangeComment = useCallback(text => {
     setComment(text)
@@ -102,5 +102,6 @@ export default withLoading(PostDetailContainer, [
   POST.GET_DETAIL.HANDLER,
   COMMENT.GET_ALL.HANDLER,
   COMMENT.CREATE.HANDLER,
-  // BOT.GET.HANDLER,
+  BOT.GET.HANDLER,
+  POST.GET_RELATED.HANDLER,
 ])
