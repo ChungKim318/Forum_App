@@ -1,17 +1,17 @@
-import {PROFILE, actionTypes} from 'actionTypes'
+import {PROFILE} from 'actionTypes'
 
-export const addProfileHandle = (payload, onSuccess = () => {}) => ({
-  type: PROFILE.ADD.HANDLER,
+export const getProfileHandle = (payload, onSuccess = () => {}) => ({
+  type: PROFILE.GET.HANDLER,
   payload,
   onSuccess,
 })
 
-export const addProfileSuccess = payload => ({
-  type: PROFILE.ADD.SUCCESS,
+export const getProfileSuccess = payload => ({
+  type: PROFILE.GET.SUCCESS,
   payload,
 })
 
-export const addProfileFailed = error => ({
-  type: PROFILE.ADD.FAILURE,
+export const getProfileFailure = error => ({
+  type: PROFILE.GET.FAILURE,
   error,
 })

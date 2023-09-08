@@ -21,4 +21,28 @@ export const styles = StyleSheet.create({
     fontSize: FontSizes.MEDIUM,
     paddingTop: metrics.span,
   },
+  newsFeedView: {
+    backgroundColor: colors.white,
+    marginTop: metrics.span,
+    marginHorizontal: metrics.span,
+    borderRadius: metrics.borderRadius,
+  },
+  slag: {
+    height: metrics.span,
+  },
+  separator: {
+    height: metrics.tiny,
+  },
+  contentContainerStyle: {
+    paddingBottom: responsiveHeight(20),
+  },
+  headerPostItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // marginHorizontal: metrics.span,
+  },
+  btnView: {
+    right: metrics.medium,
+  },
 })

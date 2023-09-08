@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {Platform, StyleSheet} from 'react-native'
 import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidth} from 'themes'
 
 export const styles = StyleSheet.create({
@@ -25,11 +25,32 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainerStyle: {
-    paddingTop: responsiveHeight(10),
-    paddingBottom: responsiveHeight(70),
+    paddingBottom: Platform.OS === 'ios' ? responsiveHeight(50) : responsiveHeight(100),
   },
   newsFeedView: {
     backgroundColor: colors.white,
     marginVertical: metrics.span,
+    marginHorizontal: metrics.span,
+    borderRadius: metrics.borderRadius,
+  },
+  textInputStyle: {
+    marginHorizontal: metrics.span,
+    marginTop: Platform.OS === 'ios' ? 0 : metrics.tiny,
+    backgroundColor: colors.light_silver,
+    paddingHorizontal: metrics.span,
+    paddingVertical: metrics.tiny,
+  },
+  separator: {
+    height: metrics.tiny,
+  },
+  emptyPost: {
+    fontFamily: FontFamily.MEDIUM,
+    fontSize: FontSizes.MEDIUM,
+    textAlign: 'center',
+    marginTop: metrics.span,
+    color: colors.silver_chalice,
+  },
+  slag: {
+    height: metrics.span,
   },
 })

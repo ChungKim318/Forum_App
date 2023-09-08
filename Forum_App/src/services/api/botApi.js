@@ -5,7 +5,7 @@ import {KEY_STORAGE} from 'constants/storage'
 
 const getAnswerApi = async prompt => {
   return await APIUtils.get(`${END_POINT.BOT.GET}?prompt=${prompt}`, {
-    prompt: prompt,
+    prompt: JSON.stringify(prompt),
   })
 }
 

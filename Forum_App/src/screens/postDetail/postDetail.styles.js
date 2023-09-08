@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {Platform, StyleSheet} from 'react-native'
 import {colors, FontFamily, FontSizes, metrics, responsiveWidth, responsiveHeight} from 'themes'
 
 export const styles = StyleSheet.create({
@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   headerStyle: {
-    padding: metrics.tiny,
+    marginTop: Platform.OS === 'ios' ? 0 : metrics.tiny,
+    paddingHorizontal: metrics.paddingHorizontal,
   },
   contentContainerStyle: {
     paddingBottom: responsiveWidth(30),
@@ -59,5 +60,22 @@ export const styles = StyleSheet.create({
     fontFamily: FontFamily.REGULAR,
     fontSize: FontSizes.NORMAL,
     color: colors.black,
+  },
+  headerPostItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // marginHorizontal: metrics.span,
+  },
+  btnView: {
+    right: metrics.medium,
+  },
+  textStyle: {
+    fontFamily: FontFamily.REGULAR,
+    fontSize: FontSizes.MEDIUM,
+    height: responsiveHeight(50),
+  },
+  customCommentStyle: {
+    paddingBottom: Platform.OS === 'ios' ? responsiveHeight(0) : responsiveHeight(5),
   },
 })

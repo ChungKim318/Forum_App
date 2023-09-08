@@ -65,16 +65,19 @@ const CreatePostView = ({
       />
       {/* // create view scrollable when keyboard is open */}
       <KeyboardAwareScrollView
+        showsVerticalScrollIndicator={false}
         onKeyboardWillShow={onWillShow}
         onKeyboardWillHide={onWillHide}
         style={styles.bodyView}
         // extraHeight={140}
         keyboardShouldPersistTaps="handled">
-        <Dropdown title={'Choose Options'} data={data} value={selectedItem} onSelect={onSelected} />
+        <View style={styles.dropDownView}>
+          <Dropdown title={'Choose Topic Options'} data={data} value={selectedItem} onSelect={onSelected} />
+        </View>
 
         <CustomTextInput
           multiline
-          placeholder="Title"
+          placeholder="Please type title..."
           textInputStyle={styles.titleTextInputStyle}
           textStyle={styles.titleTextStyle}
           value={title}
@@ -82,7 +85,7 @@ const CreatePostView = ({
         />
         <CustomTextInput
           multiline
-          placeholder="body text (optional)"
+          placeholder="Please type content..."
           textInputStyle={styles.bodyTextInputStyle}
           textStyle={styles.bodyTextInput}
           value={content}
@@ -90,7 +93,7 @@ const CreatePostView = ({
         />
       </KeyboardAwareScrollView>
 
-      <Animated.View style={[styles.footerView, shadow, translateYStyle]}>
+      {/* <Animated.View style={[styles.footerView, shadow, translateYStyle]}>
         <Text style={styles.txtFooter}>What do you want to add?</Text>
         <View style={styles.btnIcon}>
           <MicroIconButton
@@ -99,7 +102,7 @@ const CreatePostView = ({
             onPress={showModal}
           />
         </View>
-      </Animated.View>
+      </Animated.View> */}
     </SafeAreaView>
   )
 }

@@ -13,7 +13,7 @@ export const AUTH = {
 }
 
 export const PROFILE = {
-  ADD: actionTypes('PROFILE/ADD'),
+  GET: actionTypes('PROFILE/GET'),
 }
 
 export const TOPIC = {

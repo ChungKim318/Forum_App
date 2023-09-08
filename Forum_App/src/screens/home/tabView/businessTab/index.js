@@ -8,19 +8,30 @@ import {shadow} from 'themes'
 import {navigate} from 'navigation/NavigationServices'
 import NewsFeedItem from 'components/NewsFeedItem'
 import {FlashList} from '@shopify/flash-list'
+import {useIsFocused} from '@react-navigation/native'
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 
 const BusinessTab = ({topicId, ...props}) => {
-  const [postList, setPostList] = useState([])
+  const [businessPost, setBusinessPost] = useState([])
   const [isFetching, setIsFetching] = useState(false)
 
   const dispatch = useDispatch()
+  const isFocused = useIsFocused()
 
   useEffect(() => {
-    setIsFetching(true)
-    dispatch(getPostHandler(topicId, setPostList))
-  }, [])
+    if (isFocused === true) {
+      setIsFetching(true)
 
-  // console.log('Post List Item', postList)
+      dispatch(
+        getPostHandler(topicId, res => {
+          setBusinessPost(res)
+          setIsFetching(false)
+        }),
+      )
+    }
+  }, [isFocused])
+
+  // console.log('Post List Item', businessPost)
 
   const renderSeparator = () => {
     return <View style={styles.separator} />
@@ -28,12 +39,15 @@ const BusinessTab = ({topicId, ...props}) => {
 
   const renderEmpty = useCallback(() => {
     if (isFetching) {
-      return (
-        <View style={styles.emptyView}>
-          <Text style={styles.emptyTxt}>No post</Text>
+      return [1, 2, 3, 4, 5].map((item, index) => (
+        <View key={index.toString()}>
+          <SkeletonPlaceholder>
+            <View style={styles.skeletonNewsFeedView} />
+          </SkeletonPlaceholder>
         </View>
-      )
+      ))
     }
+    return <Text style={styles.emptyTxt}>Don't have post</Text>
   }, [isFetching])
 
   const renderItem = useCallback(({item, index}) => {
@@ -52,7 +66,7 @@ const BusinessTab = ({topicId, ...props}) => {
               topicName: item?.topicName,
             })
           }}>
-          <NewsFeedItem content={item?.content} numberOfLines={5} />
+          <NewsFeedItem content={item?.content} numberOfLines={5} title={item?.title} />
         </TouchableOpacity>
         <View style={styles.slag} />
       </View>
@@ -63,7 +77,7 @@ const BusinessTab = ({topicId, ...props}) => {
     <View style={styles.container}>
       <FlashList
         showsVerticalScrollIndicator={false}
-        data={postList}
+        data={businessPost}
         renderItem={renderItem}
         ListEmptyComponent={renderEmpty}
         ItemSeparatorComponent={renderSeparator}

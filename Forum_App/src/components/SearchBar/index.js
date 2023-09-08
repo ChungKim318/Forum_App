@@ -22,15 +22,6 @@ const SearchBar = React.forwardRef(
   ) => {
     return (
       <View style={[styles.container, textInputStyle]}>
-        <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
-          <Icon
-            category="FontAwesome"
-            name="search"
-            size={metrics.medium}
-            color={colors.black}
-            style={styles.searchIcon}
-          />
-        </TouchableOpacity>
         <TextInput
           ref={refInput}
           value={value}
@@ -40,6 +31,15 @@ const SearchBar = React.forwardRef(
           maxLength={maxLength}
           numberOfLines={numberOfLines}
         />
+        <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
+          <Icon
+            category="FontAwesome"
+            name="search"
+            size={metrics.medium}
+            color={colors.black}
+            style={styles.searchIcon}
+          />
+        </TouchableOpacity>
       </View>
     )
   },

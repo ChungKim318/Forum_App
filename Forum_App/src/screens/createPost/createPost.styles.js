@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {Platform, StyleSheet} from 'react-native'
 import {colors, FontFamily, FontSizes, metrics, responsiveHeight, responsiveWidth} from 'themes'
 
 export const styles = StyleSheet.create({
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     // borderWidth: 1,
   },
   headerStyle: {
-    // flex: 0.1,
+    marginTop: Platform.OS === 'ios' ? 0 : metrics.tiny,
     paddingHorizontal: metrics.paddingHorizontal,
   },
   titleTextInputStyle: {
@@ -74,5 +74,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: metrics.borderRadiusCircle,
+  },
+  dropDownView: {
+    // backgroundColor: colors.red,
+    // height: responsiveHeight(100),
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    marginHorizontal: metrics.span,
   },
 })

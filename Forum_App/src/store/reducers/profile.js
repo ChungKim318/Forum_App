@@ -1,12 +1,12 @@
-import {PROFILE, actionTypes} from 'actionTypes'
+import {PROFILE} from 'actionTypes'
 
 const initialState = {
-  profile: {},
+  profile: [],
 }
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PROFILE.ADD.SUCCESS: {
+    case PROFILE.GET.SUCCESS: {
       return {
         ...state,
         profile: action?.payload,

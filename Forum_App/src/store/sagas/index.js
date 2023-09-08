@@ -4,6 +4,7 @@ import topicSagas from './topicSagas'
 import postSagas from './postSagas'
 import commentSagas from './commentSagas'
 import botSagas from './botSagas'
+import profileSagas from './profileSagas'
 
 export default function* rootSaga() {
   yield all([fork(authSagas)])
@@ -11,4 +12,5 @@ export default function* rootSaga() {
   yield all([fork(postSagas)])
   yield all([fork(commentSagas)])
   yield all([fork(botSagas)])
+  yield all([fork(profileSagas)])
 }

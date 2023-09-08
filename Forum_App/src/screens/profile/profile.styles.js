@@ -54,7 +54,8 @@ export const styles = StyleSheet.create({
   txtInfo: {
     color: colors.white,
     fontFamily: FontFamily.MEDIUM,
-    fontSize: FontSizes.REGULAR,
+    fontSize: FontSizes.LARGE,
+    marginLeft: metrics.span,
   },
   editAvatarView: {
     position: 'absolute',

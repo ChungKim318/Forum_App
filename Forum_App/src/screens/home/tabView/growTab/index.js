@@ -8,19 +8,29 @@ import RouteKey from 'navigation/RouteKey'
 import {shadow} from 'themes'
 import {getPostHandler} from 'actions/post'
 import {useDispatch} from 'react-redux'
+import {useIsFocused} from '@react-navigation/native'
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 
 const GrowTab = ({topicId, ...props}) => {
-  const [postList, setPostList] = useState([])
+  const [growPostList, setGrowPostList] = useState([])
   const [isFetching, setIsFetching] = useState(false)
 
   const dispatch = useDispatch()
+  const isFocused = useIsFocused()
 
   useEffect(() => {
-    setIsFetching(true)
-    dispatch(getPostHandler(topicId, setPostList))
-  }, [])
+    if (isFocused === true) {
+      setIsFetching(true)
+      dispatch(
+        getPostHandler(topicId, res => {
+          setGrowPostList(res)
+          setIsFetching(false)
+        }),
+      )
+    }
+  }, [isFocused])
 
-  // console.log('TechTab22', postList)
+  // console.log('TechTab22', growPostList)
 
   const renderSeparator = () => {
     return <View style={styles.separator} />
@@ -28,12 +38,15 @@ const GrowTab = ({topicId, ...props}) => {
 
   const renderEmpty = useCallback(() => {
     if (isFetching) {
-      return (
-        <View style={styles.emptyView}>
-          <Text style={styles.emptyTxt}>No post</Text>
+      return [1, 2, 3, 4, 5].map((item, index) => (
+        <View key={index.toString()}>
+          <SkeletonPlaceholder>
+            <View style={styles.skeletonNewsFeedView} />
+          </SkeletonPlaceholder>
         </View>
-      )
+      ))
     }
+    return <Text style={styles.emptyTxt}>Don't have post</Text>
   }, [isFetching])
 
   const renderItem = useCallback(({item, index}) => {
@@ -52,7 +65,7 @@ const GrowTab = ({topicId, ...props}) => {
               topicName: item?.topicName,
             })
           }}>
-          <NewsFeedItem content={item?.content} numberOfLines={5} />
+          <NewsFeedItem content={item?.content} numberOfLines={5} title={item?.title} />
         </TouchableOpacity>
         <View style={styles.slag} />
       </View>
@@ -63,7 +76,7 @@ const GrowTab = ({topicId, ...props}) => {
     <View style={styles.container}>
       <FlashList
         showsVerticalScrollIndicator={false}
-        data={postList}
+        data={growPostList}
         renderItem={renderItem}
         ListEmptyComponent={renderEmpty}
         ItemSeparatorComponent={renderSeparator}

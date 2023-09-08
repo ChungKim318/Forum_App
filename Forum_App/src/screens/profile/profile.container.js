@@ -1,9 +1,14 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import ProfileView from './profile.view'
 import {goBack, navigate} from 'navigation/NavigationServices'
 import RouteKey from 'navigation/RouteKey'
 import DocumentPicker from 'react-native-document-picker'
 import {sendMessageOnlyRead} from 'helpers/sendNotification'
+import {useDispatch} from 'react-redux'
+import {getProfileHandle} from 'actions/profile'
+import {logoutHandle} from 'actions/auth'
+import withLoading from 'HOC/index'
+import {AUTH, PROFILE} from 'actionTypes'
 
 const listTab = [
   {
@@ -22,6 +27,19 @@ const listTab = [
 
 const ProfileContainer = ({...props}) => {
   const [singleFile, setSingleFile] = useState(null)
+  const [profile, setProfile] = useState([])
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(
+      getProfileHandle({}, res => {
+        setProfile(res)
+      }),
+    )
+  }, [])
+
+  // console.log('🚀 ~ file: profile.container.js:80 ~ ProfileContainer ~ profile', profile)
 
   const onPressBack = useCallback(() => {
     goBack()
@@ -29,6 +47,10 @@ const ProfileContainer = ({...props}) => {
 
   const onPressEdit = useCallback(() => {
     navigate(RouteKey.EditProfile)
+  }, [])
+
+  const onLogout = useCallback(() => {
+    dispatch(logoutHandle())
   }, [])
 
   const onChangeAvatar = useCallback(async () => {
@@ -56,8 +78,10 @@ const ProfileContainer = ({...props}) => {
       onChangeAvatar={onChangeAvatar}
       singleFile={singleFile}
       listTab={listTab}
+      profile={profile}
+      onLogout={onLogout}
     />
   )
 }
 
-export default ProfileContainer
+export default withLoading(ProfileContainer, [PROFILE.GET.HANDLER, AUTH.LOGOUT.HANDLER])

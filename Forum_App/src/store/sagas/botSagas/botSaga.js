@@ -8,7 +8,7 @@ export function* getAnswerSaga(action) {
 
   try {
     const res = yield call(BotApi.getAnswerApi, prompt)
-    console.log('----------Res getAnswerSaga----------', res?.data?.response)
+    // console.log('----------Res getAnswerSaga----------', res?.data?.response)
 
     onSuccess?.(res?.data?.response)
 
