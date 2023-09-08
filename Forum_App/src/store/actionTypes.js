@@ -27,6 +27,7 @@ export const POST = {
   CREATE: actionTypes('POST/CREATE'),
   UPDATE: actionTypes('POST/UPDATE'),
   GET_BY_KEYWORD: actionTypes('POST/GET_BY_KEYWORD'),
+  GET_RELATED: actionTypes('POST/GET_RELATED'),
 }
 
 export const COMMENT = {

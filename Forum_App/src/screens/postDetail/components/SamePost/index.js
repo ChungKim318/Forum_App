@@ -2,8 +2,11 @@ import {View, Text, FlatList, TouchableOpacity} from 'react-native'
 import React, {useCallback, useEffect, useState} from 'react'
 import {styles} from './styles'
 import {useDispatch} from 'react-redux'
+import {navigate} from 'navigation/NavigationServices'
+import RouteKey from 'navigation/RouteKey'
+import {hideModalEmpty} from 'components/CustomModal'
 
-const SamePost = ({...props}) => {
+const SamePost = ({relatedList, ...props}) => {
   const [data, setData] = useState([])
 
   const dispatch = useDispatch()
@@ -15,8 +18,17 @@ const SamePost = ({...props}) => {
   const renderItem = useCallback(({item}) => {
     return (
       <View style={styles.item}>
-        <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
-          <Text>{item.title}</Text>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => {
+            hideModalEmpty()
+            navigate(RouteKey.PostDetailScreen, {
+              id: item?.id,
+              title: item?.title,
+              content: item?.content,
+            })
+          }}>
+          <Text>{item?.title}</Text>
         </TouchableOpacity>
         <View style={styles.dash} />
       </View>
@@ -30,7 +42,7 @@ const SamePost = ({...props}) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={dataFake}
+        data={relatedList}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={separatorComponent}

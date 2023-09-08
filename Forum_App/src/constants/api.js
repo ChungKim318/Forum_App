@@ -23,6 +23,7 @@ export const END_POINT = {
     CREATE: `${BASE_URL}/add-post`,
     UPDATE_POST: `${BASE_URL}/update-post`,
     GET_POST_BY_KEYWORD: `${BASE_URL}/search/posts`,
+    GET_POST_RELATED: `${BASE_URL}/post/related`,
   },
 
   //COMMENT

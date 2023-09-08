@@ -99,3 +99,19 @@ export const getPostByKeywordFailure = error => ({
   type: POST.GET_BY_KEYWORD.FAILURE,
   error,
 })
+
+export const getPostRelatedHandler = (postId, onSuccess = () => {}) => ({
+  type: POST.GET_RELATED.HANDLER,
+  postId,
+  onSuccess,
+})
+
+export const getPostRelatedSuccess = payload => ({
+  type: POST.GET_RELATED.SUCCESS,
+  payload,
+})
+
+export const getPostRelatedFailure = error => ({
+  type: POST.GET_RELATED.FAILURE,
+  error,
+})

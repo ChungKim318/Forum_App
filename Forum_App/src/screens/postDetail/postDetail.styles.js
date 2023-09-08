@@ -78,4 +78,23 @@ export const styles = StyleSheet.create({
   customCommentStyle: {
     paddingBottom: Platform.OS === 'ios' ? responsiveHeight(0) : responsiveHeight(5),
   },
+  relatedTxt: {
+    fontFamily: FontFamily.BOLD,
+    fontSize: FontSizes.MEDIUM,
+    color: colors.black,
+    marginVertical: metrics.small,
+    paddingHorizontal: metrics.span,
+  },
+  relatedTitle: {
+    fontFamily: FontFamily.NORMAL,
+    fontSize: FontSizes.NORMAL,
+    color: colors.black,
+    marginVertical: metrics.tiny,
+    marginHorizontal: metrics.span,
+  },
+  dash: {
+    height: responsiveHeight(1),
+    backgroundColor: colors.silver_chalice,
+    marginVertical: responsiveHeight(10),
+  },
 })
